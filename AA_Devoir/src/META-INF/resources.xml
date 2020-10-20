@@ -1,0 +1,11 @@
+<resources>
+
+    <Resource id="CVDataSource" type="DataSource">
+        JdbcDriver org.hsqldb.jdbcDriver
+        JdbcUrl jdbc:hsqldb:file:data/cvdb;shutdown=true;hsqldb.write_delay=false
+        UserName sa
+        Password
+        JtaManaged false
+    </Resource>
+
+</resources>
