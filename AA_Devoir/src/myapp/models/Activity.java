@@ -1,11 +1,14 @@
 package myapp.models;
 import javax.persistence.Basic;
+import javax.persistence.Column;
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="Activity")
@@ -14,27 +17,42 @@ public class Activity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-	@Basic
+	@Column
+	@Size(max=4)
 	private int year;
 	
-	@Basic
-	private String nature; //(String pour le moment ensuite enum : 
+	@Column
+	private String nature; //(String pour le moment ensuite enum : expérience professionnelle, formation, projets, autre
 	
-	@Basic
+	@Column
+	@Size(min = 5, max = 15)
 	private String title;
 	
-	@Basic(optional=true)
+	@Column
+	@Size(min = 10, max = 4000)
 	private String description;
 	
-	@Basic(optional=true)
+	
+	@Column
 	private String webAdress;
 	
-	/*TODO*/
-	/*voir relation pour le CV*/
+	public Activity() {
+		super();
+	}
 	
+	public Activity(int year, String nature, String title, String description, String webAdress) {
+		super();
+		this.year = year;
+		this.nature = nature;
+		this.title = title;
+		this.description = description;
+		this.webAdress = webAdress;
+	}
+		
 	/*
 	 * Getters
 	 */
