@@ -1,10 +1,8 @@
-package myapp.models;
+package cv3000.models;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.inject.Named;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,32 +23,30 @@ public class Person implements Serializable{
     private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
-	@Column
+	@Column(nullable = false)
 	@Size(min = 3, max = 20)
     private String firstName;
 	
-	@Column
+	@Column(nullable = false)
 	@Size(min = 2, max = 30)
     private String lastName;
 	
-	@Column
+	@Column(nullable = false)
 	@Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+", message = "")
     private String mail;
 	
-	@Column
     private String webSite;
 	
-	@Column
+	@Column(nullable = false)
     private String birthDate;
 	
-	@Column
+	@Column(nullable = false)
     private String password;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private CurriculumVitae cv;
 	
 	public Person() {
@@ -120,7 +116,7 @@ public class Person implements Serializable{
     	this.lastName = lastName;
     }
     
-    public void setMAil(String mail) {
+    public void setMail(String mail) {
     	this.mail = mail;
     }
     

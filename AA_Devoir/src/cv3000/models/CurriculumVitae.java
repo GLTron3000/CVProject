@@ -1,9 +1,11 @@
-package myapp.models;
+package cv3000.models;
+
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,19 +15,18 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(name = "CV")
-public class CurriculumVitae implements Serializable{
+public class CurriculumVitae implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 	
-	@OneToOne(mappedBy="cv")
+	@OneToOne
 	private Person person;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "cv", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Collection<Activity> activities;
 	
 	public CurriculumVitae() {

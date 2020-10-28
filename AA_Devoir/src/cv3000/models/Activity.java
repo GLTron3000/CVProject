@@ -1,12 +1,14 @@
-package myapp.models;
-import javax.persistence.Basic;
+package cv3000.models;
+
 import javax.persistence.Column;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -17,28 +19,28 @@ public class Activity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-	@Column
+	@Column(nullable = false)
 	@Size(max=4)
 	private int year;
 	
-	@Column
+	@Column(nullable = false)
 	private String nature; //(String pour le moment ensuite enum : expérience professionnelle, formation, projets, autre
 	
-	@Column
+	@Column(nullable = false)
 	@Size(min = 5, max = 15)
 	private String title;
 	
-	@Column
+	@Column(nullable = false)
 	@Size(min = 10, max = 4000)
 	private String description;
+
+	private String webAdress; // C quoi ?
 	
-	
-	@Column
-	private String webAdress;
+	@ManyToOne
+	private CurriculumVitae cv;
 	
 	public Activity() {
 		super();

@@ -1,4 +1,4 @@
-package myapp.services;
+package cv3000.services;
 
 import javax.ejb.Local;
 

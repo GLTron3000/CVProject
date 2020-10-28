@@ -1,11 +1,10 @@
-package myapp.impl;
+package cv3000.impl;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
 
-import myapp.models.Person;
-import myapp.services.IUser;
+import cv3000.models.Person;
+import cv3000.services.IUser;
 
 @Stateful(name="user")
 public class User implements IUser {
