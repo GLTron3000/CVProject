@@ -20,7 +20,7 @@ public class Activity implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
 	@Column(nullable = false)
 	@Size(max=4)
@@ -58,7 +58,7 @@ public class Activity implements Serializable{
 	/*
 	 * Getters
 	 */
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -86,7 +86,7 @@ public class Activity implements Serializable{
 	 * Setters
 	 */
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

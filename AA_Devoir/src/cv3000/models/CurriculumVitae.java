@@ -21,7 +21,7 @@ public class CurriculumVitae implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 	
 	@OneToOne
 	private Person person;
@@ -43,6 +43,10 @@ public class CurriculumVitae implements Serializable {
 	 * Getters
 	 */
 	
+	public Long getId() {
+		return id;
+	}
+	
 	public Person getPerson() {
 		return person;
 	}
@@ -55,6 +59,11 @@ public class CurriculumVitae implements Serializable {
 	/*
 	 * Setter
 	 */
+	
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 	
 	public void setPerson(Person person) {
 		this.person = person;
