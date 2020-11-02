@@ -36,7 +36,7 @@ public class Person implements Serializable{
 	
 	@Column(nullable = false)
 	@Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+", message = "")
-    private String mail;
+    private String email;
 	
     private String webSite;
 	
@@ -53,12 +53,12 @@ public class Person implements Serializable{
 		super();
 	}
 	
-	public Person(String firstName, String lastName, String mail, String webSite, String birthDate,
+	public Person(String firstName, String lastName, String email, String webSite, String birthDate,
 						String password, CurriculumVitae cv) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.mail = mail;
+		this.email = email;
 		this.webSite = webSite;
 		this.birthDate = birthDate;
 		this.password = password;
@@ -81,8 +81,8 @@ public class Person implements Serializable{
     	return lastName;
     }
     
-    public String getMail() {
-    	return mail ;
+    public String getEmail() {
+    	return email ;
     }
     
     public String getWebSite() {
@@ -116,8 +116,8 @@ public class Person implements Serializable{
     	this.lastName = lastName;
     }
     
-    public void setMail(String mail) {
-    	this.mail = mail;
+    public void setEmail(String email) {
+    	this.email = email;
     }
     
     public void setWebSite(String webSite) {

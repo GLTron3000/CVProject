@@ -2,9 +2,12 @@ package cv3000.services;
 
 import javax.ejb.Local;
 
+import cv3000.models.Person;
+
 @Local
 public interface IUser {
-   void login(String login, String pwd);
+   void login(String email, String password);
    void logout();
-   String getLogin();
+   Person getPerson();
+   boolean isLogged();
 }

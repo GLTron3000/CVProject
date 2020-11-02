@@ -27,7 +27,7 @@ public class Activity implements Serializable{
 	private int year;
 	
 	@Column(nullable = false)
-	private String nature; //(String pour le moment ensuite enum : expérience professionnelle, formation, projets, autre
+	private ActivityType type;
 	
 	@Column(nullable = false)
 	@Size(min = 5, max = 15)
@@ -46,10 +46,10 @@ public class Activity implements Serializable{
 		super();
 	}
 	
-	public Activity(int year, String nature, String title, String description, String webAdress) {
+	public Activity(int year, ActivityType type, String title, String description, String webAdress) {
 		super();
 		this.year = year;
-		this.nature = nature;
+		this.type = type;
 		this.title = title;
 		this.description = description;
 		this.webAdress = webAdress;
@@ -66,8 +66,8 @@ public class Activity implements Serializable{
 		return year;
 	}
 	
-	public String getNature() {
-		return nature;
+	public ActivityType getType() {
+		return type;
 	}
 	
 	public String getTitle() {
@@ -94,8 +94,8 @@ public class Activity implements Serializable{
 		this.year = year;
 	}
 	
-	public void setNature(String nature) {
-		this.nature = nature;
+	public void setType(ActivityType type) {
+		this.type = type;
 	}
 	
 	public void setTitle(String title) {
