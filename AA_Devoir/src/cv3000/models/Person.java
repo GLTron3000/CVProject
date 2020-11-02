@@ -34,7 +34,7 @@ public class Person implements Serializable{
 	@Size(min = 2, max = 30)
     private String lastName;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	@Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+", message = "")
     private String email;
 	
