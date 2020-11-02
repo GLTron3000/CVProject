@@ -35,17 +35,17 @@ public class PersonManager implements IPersonManager{
 		em.merge(person);
 	}
 	
-	public void removePerson (int id) {
+	public void removePerson (Long id) {
 		Person person = getPersonById(id);
 		if (person != null) em.remove(person);
 	}
 	
-	public Person getPersonById (int id) {
+	public Person getPersonById (Long id) {
 		return em.find(Person.class, id);
 	}
 
 	public Person getPersonByEmail (String email) {
-		String query = "SELECT p FROM Person p WHERE p.email = : email";
+		String query = "SELECT p FROM Person p WHERE p.email = :email";
 		TypedQuery<Person> q = em.createQuery(query, Person.class);
 		q.setParameter("email", email);
 		
@@ -81,7 +81,7 @@ public class PersonManager implements IPersonManager{
 	
 	// Activity
 	
-	public void addActivity (Activity activity, int personId) {
+	public void addActivity (Activity activity, Long personId) {
 		Person person = getPersonById(personId);
 		if (person == null) return;
 		
@@ -90,12 +90,12 @@ public class PersonManager implements IPersonManager{
 		updatePerson(person);		
 	}
 	
-	public void updateActivity (Activity activity, int activityId, int personId) {
+	public void updateActivity (Activity activity, int activityId, Long personId) {
 		removeActivity(activityId, personId);
 		addActivity(activity, personId);
 	}
 	
-	public void removeActivity (int activityId, int personId) {
+	public void removeActivity (int activityId, Long personId) {
 		Person person = getPersonById(personId);
 		if (person == null) return;
 		

@@ -11,9 +11,9 @@ public interface IPersonManager {
 	
 	public void createPerson (Person person);
 	public void updatePerson (Person person);
-	public void removePerson (int id);
+	public void removePerson (Long id);
 	
-	public Person getPersonById (int id);
+	public Person getPersonById (Long id);
 	public Person getPersonByEmail (String email);
 	public Collection<Person> getPersonsByLastName(String lastname);
 	public Collection<Person> getPersonsByFirstname (String firstname);
@@ -21,9 +21,9 @@ public interface IPersonManager {
 	
 	// Activity
 	
-	public void addActivity (Activity activity, int personId);
-	public void updateActivity (Activity activity, int activityId, int personId);
-	public void removeActivity (int activityId, int personId);
+	public void addActivity (Activity activity, Long personId);
+	public void updateActivity (Activity activity, int activityId, Long personId);
+	public void removeActivity (int activityId, Long personId);
 	
 	public Collection<Activity> getActivityByTitle(String title);
 }
