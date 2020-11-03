@@ -68,7 +68,7 @@ public class PersonManager implements IPersonManager{
 	}
 	
 	public Collection<Person> getPersonsByFirstname (String firstname) {
-		String query = "SELECT p FROM Person p WHERE p.firstName LIKE :name ORDER BY name ASC";
+		String query = "SELECT p FROM Person p WHERE p.firstName LIKE :firstname ORDER BY name ASC";
 		TypedQuery<Person> q = em.createQuery(query, Person.class);
 		q.setParameter("firstname", "%"+firstname+"%");
 		try {
