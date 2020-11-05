@@ -101,8 +101,34 @@ public class TestActivityManager extends BaseJunit5 {
 		assertNull(a2);
 	}
 	
-	/*@Test
-	void testUpdateActivity() {}
-	*/
+	@Test
+	void testUpdateActivity() {
+		Person p = new Person();
+		p.setFirstName("Jean");
+		p.setLastName("Bond");
+		p.setEmail("jean@bond.com");
+		p.setBirthDate("01/01/2000");
+		p.setPassword("Bayonne");
+		
+		pm.createPerson(p);
+		
+		Activity a = new Activity();
+		a.setYear("2009");
+		a.setType(ActivityType.PROFESSIONAL);
+		a.setTitle("JamBond");
+		a.setDescription("produit locaux");
+		a.setWebAdress("jeanbond.com");
+		
+		am.addActivity(a, p);
+		
+		Activity a2 = am.getActivityById(a.getId());
+		a2.setDescription("produits locaux du terroire français");
+		am.updateActivity(a2);
+		
+		assertNotNull(a2);
+		assertEquals(a2.getDescription(), "produits locaux du terroire français");
+		
+	}
+	
 
 }

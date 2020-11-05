@@ -41,7 +41,7 @@ public class Activity implements Serializable{
 
 	@Column(nullable = true)
 	//pattern de web site
-	private String webAdress; // C quoi ? dans le cdc, genre le site de ton activité 
+	private String webAdress;
 	
 	@ManyToOne
 	private Person person;
