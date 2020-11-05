@@ -22,8 +22,8 @@ public interface IPersonManager {
 	// Activity
 	
 	public void addActivity (Activity activity, Long personId);
-	public void updateActivity (Activity activity, int activityId, Long personId);
-	public void removeActivity (int activityId, Long personId);
+	public void updateActivity (Activity activity, Long activityId, Long personId);
+	public void removeActivity (Long activityId, Long personId);
 	
 	public Collection<Activity> getActivityByTitle(String title);
 }

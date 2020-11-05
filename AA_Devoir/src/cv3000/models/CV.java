@@ -1,7 +1,9 @@
 package cv3000.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(name = "CV")
-public class CurriculumVitae implements Serializable {
+public class CV implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -29,11 +31,11 @@ public class CurriculumVitae implements Serializable {
 	@OneToMany(mappedBy = "cv", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Collection<Activity> activities;
 	
-	public CurriculumVitae() {
+	public CV() {
 		super();
 	}
 	
-	public CurriculumVitae(Person person, Collection<Activity> activities) {
+	public CV(Person person, Collection<Activity> activities) {
 		super();
 		this.person = person;
 		this.activities = activities;
@@ -53,6 +55,18 @@ public class CurriculumVitae implements Serializable {
 	
 	public Collection<Activity> getActivities(){
 		return activities;
+	}
+	
+	public Activity getActivity(Long activityId) {
+		ArrayList <Activity> activities = new ArrayList<Activity>(getActivities());
+		Iterator <Activity> it = activities.iterator();
+		while (it.hasNext()) { 
+			Activity activity = it.next();
+            if(activity.getId() == activityId)
+            	return activity;
+        } 
+		
+		return null;
 	}
 	
 	

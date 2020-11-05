@@ -47,14 +47,14 @@ public class Person implements Serializable{
     private String password;
 	
 	@OneToOne(mappedBy = "person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private CurriculumVitae cv;
+	private CV cv;
 	
 	public Person() {
 		super();
 	}
 	
 	public Person(String firstName, String lastName, String email, String webSite, String birthDate,
-						String password, CurriculumVitae cv) {
+						String password, CV cv) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -97,7 +97,7 @@ public class Person implements Serializable{
     	return password;
     }
     
-    public CurriculumVitae getCV() {
+    public CV getCV() {
     	return cv;
     }
     
@@ -132,7 +132,7 @@ public class Person implements Serializable{
     	this.password = password;
     }
     
-    public void setCurriculumVitae(CurriculumVitae cv) {
+    public void setCV(CV cv) {
     	this.cv = cv;
     }
 

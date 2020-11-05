@@ -1,5 +1,6 @@
 package cv3000.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -11,7 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import cv3000.models.Activity;
-import cv3000.models.CurriculumVitae;
+import cv3000.models.CV;
 import cv3000.models.Person;
 import cv3000.services.IPersonManager;
 
@@ -26,8 +27,9 @@ public class PersonManager implements IPersonManager{
 	// Person
 	
 	public void createPerson (Person person) {
-		person.setCurriculumVitae(new CurriculumVitae());
-		
+		person.setCV(new CV());
+		person.getCV().setPerson(person);
+		person.getCV().setActivities(new ArrayList<Activity>());
 		em.persist(person);
 	}
 	
@@ -68,7 +70,7 @@ public class PersonManager implements IPersonManager{
 	}
 	
 	public Collection<Person> getPersonsByFirstname (String firstname) {
-		String query = "SELECT p FROM Person p WHERE p.firstName LIKE :firstname ORDER BY name ASC";
+		String query = "SELECT p FROM Person p WHERE p.firstName LIKE :firstname ORDER BY firstname ASC";
 		TypedQuery<Person> q = em.createQuery(query, Person.class);
 		q.setParameter("firstname", "%"+firstname+"%");
 		try {
@@ -90,28 +92,31 @@ public class PersonManager implements IPersonManager{
 		updatePerson(person);		
 	}
 	
-	public void updateActivity (Activity activity, int activityId, Long personId) {
+	public void updateActivity (Activity activity, Long activityId, Long personId) {
 		removeActivity(activityId, personId);
 		addActivity(activity, personId);
 	}
 	
-	public void removeActivity (int activityId, Long personId) {
+	public void removeActivity (Long activityId, Long personId) {
 		Person person = getPersonById(personId);
 		if (person == null) return;
 		
-		Optional<Activity> oactivity = person.getCV().getActivities().stream().filter(a -> a.getId() == activityId).findFirst();
+		//Optional<Activity> oactivity = person.getCV().getActivities().stream().filter(a -> a.getId() == activityId).findFirst();
+
+		Activity oactivity = person.getCV().getActivity(activityId);
+				
+		if (oactivity == null) return;
 		
-		if (oactivity.isEmpty()) return;
+		//Activity activity = oactivity.get();
 		
-		Activity activity = oactivity.get();
-		
-		person.getCV().getActivities().remove(activity);
+		person.getCV().getActivities().remove(oactivity);//activity);
+		System.out.println("remove");
 				
 		updatePerson(person);
 	}
 	
 	public Collection<Activity> getActivityByTitle(String title) {
-		String query = "SELECT a FROM Activity a WHERE a.title LIKE :name ORDER BY title ASC";
+		String query = "SELECT a FROM Activity a WHERE a.title LIKE :title ORDER BY title ASC";
 		TypedQuery<Activity> q = em.createQuery(query, Activity.class);
 		q.setParameter("title", "%"+title+"%");
 		try {

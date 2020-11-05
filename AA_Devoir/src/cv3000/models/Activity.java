@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -24,29 +25,32 @@ public class Activity implements Serializable{
 
 	@Column(nullable = false)
 	@Size(max=4)
-	private int year;
+	@Pattern(regexp="^[12][0-9]{3}$")	//Years from 1000 to 2999
+	private String year;
 	
 	@Column(nullable = false)
 	private ActivityType type;
 	
 	@Column(nullable = false)
-	@Size(min = 5, max = 15)
+	@Size(min = 3, max = 15)
 	private String title;
 	
-	@Column(nullable = false)
-	@Size(min = 10, max = 4000)
+	@Column(nullable = true)
+	@Size(min = 5, max = 4000)
 	private String description;
 
-	private String webAdress; // C quoi ?
+	@Column(nullable = true)
+	//pattern de web site
+	private String webAdress; // C quoi ? dans le cdc, genre le site de ton activité 
 	
 	@ManyToOne
-	private CurriculumVitae cv;
+	private CV cv;
 	
 	public Activity() {
 		super();
 	}
 	
-	public Activity(int year, ActivityType type, String title, String description, String webAdress) {
+	public Activity(String year, ActivityType type, String title, String description, String webAdress) {
 		super();
 		this.year = year;
 		this.type = type;
@@ -62,7 +66,7 @@ public class Activity implements Serializable{
 		return id;
 	}
 	
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 	
@@ -90,7 +94,7 @@ public class Activity implements Serializable{
 		this.id = id;
 	}
 	
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 	

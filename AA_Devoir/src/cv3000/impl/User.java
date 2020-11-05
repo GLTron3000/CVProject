@@ -29,7 +29,8 @@ public class User implements IUser {
 
     @Remove
     public void logout () {
-        
+        this.isLogged = false;
+        this.person = null;
     }
 
     public Person getPerson () {
