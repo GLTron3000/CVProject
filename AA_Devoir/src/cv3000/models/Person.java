@@ -1,6 +1,7 @@
 package cv3000.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.inject.Named;
 import javax.persistence.CascadeType;
@@ -10,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
@@ -20,7 +22,7 @@ import javax.validation.constraints.Size;
 @Table(name = "Person")
 public class Person implements Serializable{
 	
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,94 +48,93 @@ public class Person implements Serializable{
 	@Column(nullable = false)
     private String password;
 	
-	@OneToOne(mappedBy = "person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private CV cv;
+	@OneToMany(mappedBy = "person", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Collection<Activity> activities;
 	
 	public Person() {
 		super();
 	}
 	
-	public Person(String firstName, String lastName, String email, String webSite, String birthDate,
-						String password, CV cv) {
+	public Person(Long id, String firstName, String lastName, String email, String webSite, String birthDate, String password, Collection<Activity> activities) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.webSite = webSite;
 		this.birthDate = birthDate;
 		this.password = password;
-		this.cv = cv;
+		this.activities = activities;
 	}
-	
-	
-    /*
-     * Getters
-     */
-    public Long getId() {
-    	return id;
-    }
-    
-    public String getFirstName() {
-    	return firstName;
-    }
-    
-    public String getLastName() {
-    	return lastName;
-    }
-    
-    public String getEmail() {
-    	return email ;
-    }
-    
-    public String getWebSite() {
-    	return webSite;
-    }
-    
-    public String getBirthDate() {
-    	return birthDate;
-    }
-    
-    public String getPassword() {
-    	return password;
-    }
-    
-    public CV getCV() {
-    	return cv;
-    }
-    
-    /*
-     * Setters
-     */
+
+	public Long getId() {
+		return id;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getWebSite() {
+		return webSite;
+	}
+
+	public void setWebSite(String webSite) {
+		this.webSite = webSite;
+	}
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Collection<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(Collection<Activity> activities) {
+		this.activities = activities;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
-    public void setFirstName(String firstName) {
-    	this.firstName = firstName;
-    }
-    
-    public void setLastName(String lastName) {
-    	this.lastName = lastName;
-    }
-    
-    public void setEmail(String email) {
-    	this.email = email;
-    }
-    
-    public void setWebSite(String webSite) {
-    	this.webSite = webSite;
-    }
-    
-    public void setBirthDate(String birthDate) {
-    	this.birthDate = birthDate;
-    }
-    
-    public void setPassword(String password) {
-    	this.password = password;
-    }
-    
-    public void setCV(CV cv) {
-    	this.cv = cv;
-    }
+	
 
 }

@@ -2,7 +2,6 @@ package cv3000.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
@@ -12,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import cv3000.models.Activity;
-import cv3000.models.CV;
 import cv3000.models.Person;
 import cv3000.services.IPersonManager;
 
@@ -23,13 +21,8 @@ public class PersonManager implements IPersonManager{
 	@PersistenceContext(unitName = "cvdb")
 	EntityManager em;
 
-	
-	// Person
-	
 	public void createPerson (Person person) {
-		person.setCV(new CV());
-		person.getCV().setPerson(person);
-		person.getCV().setActivities(new ArrayList<Activity>());
+		person.setActivities(new ArrayList<Activity>());
 		em.persist(person);
 	}
 	
@@ -79,52 +72,5 @@ public class PersonManager implements IPersonManager{
 			return null;
 		}
 	}
-		
-	
-	// Activity
-	
-	public void addActivity (Activity activity, Long personId) {
-		Person person = getPersonById(personId);
-		if (person == null) return;
-		
-		person.getCV().getActivities().add(activity);
-		
-		updatePerson(person);		
-	}
-	
-	public void updateActivity (Activity activity, Long activityId, Long personId) {
-		removeActivity(activityId, personId);
-		addActivity(activity, personId);
-	}
-	
-	public void removeActivity (Long activityId, Long personId) {
-		Person person = getPersonById(personId);
-		if (person == null) return;
-		
-		//Optional<Activity> oactivity = person.getCV().getActivities().stream().filter(a -> a.getId() == activityId).findFirst();
-
-		Activity oactivity = person.getCV().getActivity(activityId);
-				
-		if (oactivity == null) return;
-		
-		//Activity activity = oactivity.get();
-		
-		person.getCV().getActivities().remove(oactivity);//activity);
-		System.out.println("remove");
-				
-		updatePerson(person);
-	}
-	
-	public Collection<Activity> getActivityByTitle(String title) {
-		String query = "SELECT a FROM Activity a WHERE a.title LIKE :title ORDER BY title ASC";
-		TypedQuery<Activity> q = em.createQuery(query, Activity.class);
-		q.setParameter("title", "%"+title+"%");
-		try {
-			return q.getResultList();
-		} catch (Exception e) {
-			return null;
-		}
-	}
-	
 	
 }

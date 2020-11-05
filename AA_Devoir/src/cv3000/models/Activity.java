@@ -44,73 +44,83 @@ public class Activity implements Serializable{
 	private String webAdress; // C quoi ? dans le cdc, genre le site de ton activité 
 	
 	@ManyToOne
-	private CV cv;
+	private Person person;
 	
 	public Activity() {
 		super();
 	}
 	
-	public Activity(String year, ActivityType type, String title, String description, String webAdress) {
+	public Activity(Long id, String year, ActivityType type, String title, String description, String webAdress, Person person) {
 		super();
+		this.id = id;
 		this.year = year;
 		this.type = type;
 		this.title = title;
 		this.description = description;
 		this.webAdress = webAdress;
+		this.person = person;
 	}
-		
-	/*
-	 * Getters
-	 */
+
+
 	public Long getId() {
 		return id;
 	}
-	
-	public String getYear() {
-		return year;
-	}
-	
-	public ActivityType getType() {
-		return type;
-	}
-	
-	public String getTitle() {
-		return title;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public String getWebAdress() {
-		return webAdress;
-	}
-	
-	/*
-	 * Setters
-	 */
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
+	public String getYear() {
+		return year;
+	}
+
 	public void setYear(String year) {
 		this.year = year;
 	}
-	
+
+	public ActivityType getType() {
+		return type;
+	}
+
 	public void setType(ActivityType type) {
 		this.type = type;
 	}
-	
+
+	public String getTitle() {
+		return title;
+	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
+	public String getDescription() {
+		return description;
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public String getWebAdress() {
+		return webAdress;
+	}
+
 	public void setWebAdress(String webAdress) {
 		this.webAdress = webAdress;
 	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 }

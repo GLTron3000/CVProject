@@ -3,6 +3,7 @@ package cv3000.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ public class TestPersonManager extends BaseJunit5 {
 	@Inject
 	IPersonManager pm;
 	
-/*	@Test
+	@Test
 	void testCreatePerson() {
 		Person p = new Person();
 		p.setFirstName("Jean");
@@ -29,9 +30,9 @@ public class TestPersonManager extends BaseJunit5 {
 		
 		Person p2 = pm.getPersonByEmail("jean@pierre.com");
 		assertNotNull(p2);
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	void testRemovePerson() {
 		Person p = new Person();
 		p.setFirstName("Jean");
@@ -47,9 +48,9 @@ public class TestPersonManager extends BaseJunit5 {
 		Person p2 = pm.getPersonByEmail("jean@paul.com");
 		assertNull(p2);
 		
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	void testUpdatePerson() {	
 		Person p = new Person();
 		p.setFirstName("Jean");
@@ -65,9 +66,9 @@ public class TestPersonManager extends BaseJunit5 {
 		pm.updatePerson(person);
 		assertNotNull(person);
 		assertEquals(person.getPassword(), "456");
-	}*/
+	}
 	
-/*	@Test
+	@Test
 	void testGetPersonByEmail() {
 		Person p = new Person();
 		p.setFirstName("Arthur");
@@ -81,23 +82,23 @@ public class TestPersonManager extends BaseJunit5 {
 		Person p2 = pm.getPersonByEmail("arthur@leroi.com");
 		assertNotNull(p2);
 		assertEquals(p2.getEmail(), "arthur@leroi.com");
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	void testGetPersonsByFirstName() {		
 		Person person =  (Person) pm.getPersonsByFirstname("aaa").toArray()[0];
 		assertNotNull(person);
 		assertEquals(person.getFirstName(), "aaa");
-	}*/
+	}
 	
-/*	@Test
+	@Test
 	void testGetPersonsByLastName() {
 		Person p2 = (Person) pm.getPersonsByLastName("bbb").toArray()[0];
 		assertNotNull(p2);
 		assertEquals(p2.getLastName(), "bbb");
-	}*/
+	}
 	
-/*	@Test
+	@Test
 	void testAddActivity() {
 		Person p = new Person();
 		p.setFirstName("James");
@@ -121,12 +122,11 @@ public class TestPersonManager extends BaseJunit5 {
 		Activity a2 = (Activity) pm.getActivityByTitle("Avatar").toArray()[0];
 		assertNotNull(a2);
 		assertEquals(a2.getTitle(), "Avatar");
-	}*/
+	}
 	
-	/*@Test 
+	@Test
 	void testGetActivityByTitle(){
-	
-	Person p = new Person();
+		Person p = new Person();
 		p.setFirstName("James");
 		p.setLastName("Bond");
 		p.setEmail("james@bond.com");
@@ -149,7 +149,7 @@ public class TestPersonManager extends BaseJunit5 {
 		assertNotNull(a2);
 		assertEquals(a2.getTitle(), "james bond");
 		
-	}*/
+	}
 	
 	@Test
 	void testRemoveActivity() {
@@ -176,7 +176,6 @@ public class TestPersonManager extends BaseJunit5 {
 		
 		Activity a2 = (Activity) pm.getActivityByTitle("james james").toArray()[0];
 		assertNull(a2);
-		
 	}
 	
 	/*@Test
