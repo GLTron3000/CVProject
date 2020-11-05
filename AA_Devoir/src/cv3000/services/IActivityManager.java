@@ -12,6 +12,5 @@ public interface IActivityManager {
 	public void removeActivity (Long activityId);
 	
 	public Activity getActivityById (Long id);
-	public Collection<Activity> getActivitiesPersonId (Long personId);
 	public Collection<Activity> getActivitiesByTitle(String title);
 }

@@ -3,12 +3,9 @@ package cv3000.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 
-import cv3000.models.Activity;
-import cv3000.models.ActivityType;
 import cv3000.models.Person;
 import cv3000.services.IPersonManager;
 
@@ -85,17 +82,35 @@ public class TestPersonManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testGetPersonsByFirstName() {		
-		Person person =  (Person) pm.getPersonsByFirstname("aaa").toArray()[0];
+	void testGetPersonsByFirstName() {
+		Person p = new Person();
+		p.setFirstName("Arthur2");
+		p.setLastName("LeRoi3");
+		p.setEmail("arthur2@leroi.com");
+		p.setBirthDate("01/01/2000");
+		p.setPassword("table");
+		
+		pm.createPerson(p);
+		
+		Person person = (Person) pm.getPersonsByFirstname("Arthur2").toArray()[0];
 		assertNotNull(person);
-		assertEquals(person.getFirstName(), "aaa");
+		assertEquals(person.getFirstName(), "Arthur2");
 	}
 	
 	@Test
 	void testGetPersonsByLastName() {
-		Person p2 = (Person) pm.getPersonsByLastName("bbb").toArray()[0];
+		Person p = new Person();
+		p.setFirstName("Arthur3");
+		p.setLastName("LeRoi3");
+		p.setEmail("arthur3@leroi.com");
+		p.setBirthDate("01/01/2000");
+		p.setPassword("table");
+		
+		pm.createPerson(p);
+		
+		Person p2 = (Person) pm.getPersonsByLastName("LeRoi3").toArray()[0];
 		assertNotNull(p2);
-		assertEquals(p2.getLastName(), "bbb");
+		assertEquals(p2.getLastName(), "LeRoi3");
 	}
 	
 

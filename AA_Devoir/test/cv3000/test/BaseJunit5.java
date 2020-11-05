@@ -1,5 +1,7 @@
 package cv3000.test;
 
+import java.util.Properties;
+
 import javax.ejb.embeddable.EJBContainer;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -27,7 +29,10 @@ public class BaseJunit5 {
     @BeforeAll
     static public void beforeAll() throws Exception {
         if (container == null) {
-            container = EJBContainer.createEJBContainer();
+        	final Properties p = new Properties();
+        	
+            p.put("CVDataSource.JdbcUrl", "jdbc:hsqldb:mem:cvdb");
+            container = EJBContainer.createEJBContainer(p);
             // prevoir la fermeture
             Thread t = new Thread(BaseJunit5::afterAll);
             Runtime.getRuntime().addShutdownHook(t);

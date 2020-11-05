@@ -41,18 +41,6 @@ public class ActivityManager implements IActivityManager {
 	public Activity getActivityById(Long id) {
 		return em.find(Activity.class, id);
 	}
-
-	@Override
-	public Collection<Activity> getActivitiesPersonId(Long personId) {
-		String query = "SELECT a FROM Activity a WHERE a.person_id = :personId ORDER BY title ASC";
-		TypedQuery<Activity> q = em.createQuery(query, Activity.class);
-		q.setParameter("personId", "%"+personId+"%");
-		try {
-			return q.getResultList();
-		} catch (Exception e) {
-			return null;
-		}
-	}
 	
 	@Override
 	public Collection<Activity> getActivitiesByTitle(String title) {
