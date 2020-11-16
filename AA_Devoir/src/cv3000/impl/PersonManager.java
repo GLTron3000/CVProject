@@ -72,5 +72,10 @@ public class PersonManager implements IPersonManager{
 			return null;
 		}
 	}
+
+	@Override
+	public Collection<Person> getAllPersons() {
+		return em.createQuery("Select p From Person p", Person.class).getResultList();
+	}
 	
 }

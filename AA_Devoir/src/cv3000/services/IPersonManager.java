@@ -11,6 +11,7 @@ public interface IPersonManager {
 	
 	public Person getPersonById (Long id);
 	public Person getPersonByEmail (String email);
+	public Collection<Person>  getAllPersons ();
 	public Collection<Person> getPersonsByLastName(String lastname);
 	public Collection<Person> getPersonsByFirstname (String firstname);
 		

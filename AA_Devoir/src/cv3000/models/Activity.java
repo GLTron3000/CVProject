@@ -32,7 +32,7 @@ public class Activity implements Serializable{
 	private ActivityType type;
 	
 	@Column(nullable = false)
-	@Size(min = 3, max = 15)
+	@Size(min = 3, max = 50)
 	private String title;
 	
 	@Column(nullable = true)

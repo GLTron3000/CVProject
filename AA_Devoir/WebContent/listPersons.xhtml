@@ -7,7 +7,17 @@
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
             <h1>
-                <h:outputText value="List of Persons Page" />
+                <h:outputText value="List of Persons" />
+                <h:dataTable value="#{person.persons}" var="p" styleClass="table table-hover" headerClass="danger" footerClass="danger" rowClasses="success,warning">
+                	<h:column>
+				        <f:facet name="header">FirstName</f:facet>
+				        <h:outputText value="#{p.firstName}" />
+				    </h:column>
+				    <h:column>
+				        <f:facet name="header">lastName</f:facet>
+				        <h:outputText value="#{p.lastName}" />
+				    </h:column>
+                </h:dataTable>
             </h1>
         </ui:define>
         <ui:define name="title">CV3000-Persons</ui:define>
