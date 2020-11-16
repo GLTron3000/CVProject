@@ -13,7 +13,7 @@ import cv3000.services.IPersonManager;
 
 @Named("person")
 @SessionScoped
-public class PersonControler implements Serializable {
+public class PersonController implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 

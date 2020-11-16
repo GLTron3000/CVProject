@@ -2,25 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>
-                <h:outputText value="List of Persons" />
-                <h:dataTable value="#{person.persons}" var="p" styleClass="table table-hover" headerClass="danger" footerClass="danger" rowClasses="success,warning">
-                	<h:column>
-				        <f:facet name="header">FirstName</f:facet>
+                <p:dataTable value="#{person.persons}" var="p">
+                	<f:facet name="header">
+				        Liste des personnes
+				    </f:facet>
+                	<p:column headerText="Prenom">
 				        <h:outputText value="#{p.firstName}" />
-				    </h:column>
-				    <h:column>
-				        <f:facet name="header">lastName</f:facet>
+				    </p:column>
+				    <p:column headerText="Nom">
 				        <h:outputText value="#{p.lastName}" />
-				    </h:column>
-                </h:dataTable>
-            </h1>
+				    </p:column>
+				    <p:column headerText="Date de naissance">
+				        <h:outputText value="#{p.birthDate}" />
+				    </p:column>
+				    <p:column headerText="Email">
+				        <h:outputText value="#{p.email}" />
+				    </p:column>
+				    <p:column headerText="Site web">
+				        <h:outputText value="#{p.webSite}" />
+				    </p:column>
+                </p:dataTable>
         </ui:define>
-        <ui:define name="title">CV3000-Persons</ui:define>
+        <ui:define name="title">CV3000 - Person List</ui:define>
     </ui:composition>
 
 </html>

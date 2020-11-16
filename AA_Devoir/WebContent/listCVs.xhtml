@@ -2,15 +2,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>
-                <h:outputText value="List of CVs Page Page" />
-            </h1>
+            <p:dataTable value="#{person.persons}" var="p">
+                	<f:facet name="header">
+				        Liste des CV
+				    </f:facet>
+				    <p:column style="width:40px">
+			            <p:rowToggler />
+			        </p:column>
+                	<p:column headerText="Personne">
+				        <h:outputText value="#{p.email}" />
+				    </p:column>
+				    <p:rowExpansion>
+					    <p:dataTable value="#{p.activities}" var="a">
+		                	<p:column headerText="Titre">
+						        <h:outputText value="#{a.title}" />
+						    </p:column>
+						    
+						    <p:column headerText="Description">
+						        <h:outputText value="#{a.description}" />
+						    </p:column>
+						    
+						    <p:column headerText="Web">
+						        <h:outputText value="#{a.webAdress}" />
+						    </p:column>
+						    
+						    <p:column headerText="Année">
+						        <h:outputText value="#{a.year}" />
+						    </p:column>
+						    
+						    <p:column headerText="Type">
+						        <h:outputText value="#{a.type}" />
+						    </p:column>
+		
+		                </p:dataTable>
+				    </p:rowExpansion>
+
+                </p:dataTable>
         </ui:define>
-        <ui:define name="title">CV3000-CVs</ui:define>
+        <ui:define name="title">CV3000 - CV List</ui:define>
     </ui:composition>
 
 </html>

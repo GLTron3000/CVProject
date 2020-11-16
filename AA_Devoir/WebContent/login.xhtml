@@ -2,15 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>
-                <h:outputText value="Login Page" />
-            </h1>
+        	<h1>Connection</h1>
+        	<h:form id="loginForm">
+	            <h:panelGrid columns="2" cellpadding="5">
+		            <h:outputLabel for="email" value="Email" />
+		            <p:inputText id="email" value="#{login.email}" required="true" label="email" />
+		             
+		            <h:outputLabel for="password" value="Mot de passe" />
+		            <p:password id="password" value="#{login.password}" required="true" label="password" />
+		             
+		            <f:facet name="footer">
+		                <p:commandButton value="Connection" update="growl" action="#{login.login()}"/>
+		            </f:facet>  
+	        	</h:panelGrid>
+	        </h:form>
+	        
         </ui:define>
-        <ui:define name="title">CV3000-Login</ui:define>
+        <ui:define name="title">CV3000 - Login</ui:define>
     </ui:composition>
 
 </html>

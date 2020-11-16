@@ -17,14 +17,16 @@ public class User implements IUser {
     @Inject
     IPersonManager personManager;
 
-    public void login (String email, String password) {
+    public boolean login (String email, String password) {
         Person person = personManager.getPersonByEmail(email);
-        if (person == null) return;
+        if (person == null) return false;
         
-        if (!person.getPassword().equals(password)) return;
+        if (!person.getPassword().equals(password)) return false;
         
         this.isLogged = true;	
         this.person = person;
+        
+        return true;
     }
 
     @Remove

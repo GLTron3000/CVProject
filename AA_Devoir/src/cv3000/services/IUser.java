@@ -6,7 +6,7 @@ import cv3000.models.Person;
 
 @Local
 public interface IUser {
-   void login(String email, String password);
+   boolean login(String email, String password);
    void logout();
    Person getPerson();
    boolean isLogged();
