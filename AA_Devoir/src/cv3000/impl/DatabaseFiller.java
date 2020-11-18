@@ -72,7 +72,7 @@ public class DatabaseFiller {
 				a.setDescription(job);
 				a.setYear(getRandomYear());
 				a.setType(getRandomActivityType());
-				a.setWebAdress(job.toLowerCase().trim()+".com");	
+				a.setWebAdress(job.toLowerCase().replaceAll("\\s+", "")+".com");	
 				
 				System.out.println("[DBFILL] Adding Activity "+a.getTitle()+" "+a.getDescription()+" "+a.getYear()+" "+a.getType()+" "+a.getWebAdress());
 				am.addActivity(a, p);

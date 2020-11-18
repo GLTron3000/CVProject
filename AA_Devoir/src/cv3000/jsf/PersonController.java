@@ -7,6 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import cv3000.models.Activity;
 import cv3000.models.Person;
 import cv3000.services.IActivityManager;
 import cv3000.services.IPersonManager;
@@ -25,5 +26,9 @@ public class PersonController implements Serializable {
 	
 	public Collection<Person> getPersons() {
 		return personManager.getAllPersons();
+	}
+	
+	public Collection<Activity> getActivities(long id) {
+		return personManager.getPersonById(id).getActivities();
 	}
 }

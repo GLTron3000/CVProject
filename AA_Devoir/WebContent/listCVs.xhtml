@@ -18,7 +18,7 @@
 				        <h:outputText value="#{p.email}" />
 				    </p:column>
 				    <p:rowExpansion>
-					    <p:dataTable value="#{p.activities}" var="a">
+				        <p:dataTable value="#{person.getActivities(p.id)}" var="a">
 		                	<p:column headerText="Titre">
 						        <h:outputText value="#{a.title}" />
 						    </p:column>
