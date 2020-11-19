@@ -72,6 +72,17 @@ public class PersonManager implements IPersonManager{
 			return null;
 		}
 	}
+	
+	public Collection<Person> getPersonsByName(String name){
+		String query = "SELECT p FROM Person p WHERE p.lastName LIKE :name OR p.firstName LIKE :name ORDER BY p.lastName ASC";
+		TypedQuery<Person> q = em.createQuery(query, Person.class);
+		q.setParameter("name", "%"+name+"%");
+		try {
+			return q.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	@Override
 	public Collection<Person> getAllPersons() {

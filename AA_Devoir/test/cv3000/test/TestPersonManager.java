@@ -113,5 +113,22 @@ public class TestPersonManager extends BaseJunit5 {
 		assertEquals(p2.getLastName(), "LeRoi3");
 	}
 	
+	@Test
+	void testGetPersonsByName() {
+		Person p = new Person();
+		p.setFirstName("Arthur3");
+		p.setLastName("LeRoi3");
+		p.setEmail("arthur3@leroi.com");
+		p.setBirthDate("01/01/2000");
+		p.setPassword("table");
+		
+		pm.createPerson(p);
+		
+		Person p2 = (Person) pm.getPersonsByName("LeRoi3").toArray()[0];
+		assertNotNull(p2);
+		assertEquals(p2.getLastName(), "LeRoi3");
+	}
+	
+	
 
 }

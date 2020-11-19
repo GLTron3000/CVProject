@@ -14,5 +14,6 @@ public interface IPersonManager {
 	public Collection<Person>  getAllPersons ();
 	public Collection<Person> getPersonsByLastName(String lastname);
 	public Collection<Person> getPersonsByFirstname (String firstname);
+	public Collection<Person> getPersonsByName(String name);
 		
 }

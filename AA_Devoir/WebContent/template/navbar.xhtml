@@ -29,12 +29,19 @@
             <div class="collapse navbar-collapse"
                 id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><h:link outcome="search">Rechercher</h:link></li>
+	                <li class="dropdown"><a href="#" class="dropdown-toggle"
+	                        data-toggle="dropdown" role="button" aria-haspopup="true"
+	                        aria-expanded="false">Recherches<span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+							    <li><h:link outcome="searchPerson">Personne</h:link></li>
+							    <li><h:link outcome="searchCV">CV</h:link></li>
+						    </ul>
+	                </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">Listes<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-						    <li><h:link outcome="listPersons">Personne</h:link></li>
+						    <li><h:link outcome="listPersons">Personnes</h:link></li>
 						    <li><h:link outcome="listCVs">CV</h:link></li>
 					    </ul>
                     </li>

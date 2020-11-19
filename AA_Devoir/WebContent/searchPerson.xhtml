@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template/layout.xhtml">
+        <ui:define name="content">
+        		<h:form>
+	                <h:outputText value="Search:" />
+	                <p:inputText id="text" value='#{person.name}' placeholder="person by first or lastname"/>
+				        <f:ajax event="keyup" listener="#{person.findPersonsbyName()}" execute="@this" render="result-panel"/>
+	            </h:form>
+	            
+	             <h:panelGroup id="result-panel" layout="block">
+                    <ul>
+                        <ui:repeat value="#{person.personsFinding}" var="pf">
+                            <li>#{pf.lastName} #{pf.firstName}</li>
+                        </ui:repeat>
+                    </ul>
+                </h:panelGroup>     
+ 
+        </ui:define>
+        <ui:define name="title">CV3000 - Person List</ui:define>
+    </ui:composition>
+
+</html>

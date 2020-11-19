@@ -24,11 +24,35 @@ public class PersonController implements Serializable {
 	@Inject
 	IActivityManager activityManager;
 	
+	String name;
+	
+	Collection<Person> personsFinding;
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Collection<Person> getPersonsFinding(){
+		return this.personsFinding;
+	}
+	
+	public void setPersonsFinding(Collection<Person> personsFinding) {
+		this.personsFinding = personsFinding;
+	}
+	
 	public Collection<Person> getPersons() {
 		return personManager.getAllPersons();
 	}
 	
 	public Collection<Activity> getActivities(long id) {
 		return personManager.getPersonById(id).getActivities();
+	}
+	
+	public void findPersonsbyName(){
+		setPersonsFinding(personManager.getPersonsByName(name));
 	}
 }
