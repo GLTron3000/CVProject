@@ -7,20 +7,37 @@
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-        		<h:form>
-	                <h:outputText value="Search:" />
-	                <p:inputText id="text" value='#{person.name}' placeholder="person by first or lastname"/>
-				        <f:ajax event="keyup" listener="#{person.findPersonsbyName()}" execute="@this" render="result-panel"/>
-	            </h:form>
 	            
-	             <h:panelGroup id="result-panel" layout="block">
-                    <ul>
-                        <ui:repeat value="#{person.personsFinding}" var="pf">
-                            <li>#{pf.lastName} #{pf.firstName}</li>
-                        </ui:repeat>
-                    </ul>
-                </h:panelGroup>     
- 
+	            <div class="ui-g ui-fluid">
+				    <h:form>
+				    	<div class="ui-inputgroup">
+				            <p:inputText id="searchValueInput" value="#{search.searchValue}" placeholder="Nom ou prénom" required="true"/>
+				            <!-- Très laid mais p:selectOneMenu marche juste pas et j'arrive pas trouver pourquoi -->
+				            <h:selectOneMenu id="searchTypeSelect" value="#{search.searchType}" required="true">
+					            <f:selectItem itemLabel="Prenom" itemValue="firstname" />
+					            <f:selectItem itemLabel="Nom" itemValue="lastname" />
+					        </h:selectOneMenu>  
+				            <p:commandButton value="Rechercher" action="#{search.search()}" update="result-table"/>
+					    </div>
+					    <hr/>
+					    <p:dataTable id="result-table"
+					    			 var="p" value="#{search.personsResult}" rows="10"
+					                 paginator="true"
+					                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					                 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} résultats"
+					                 rowsPerPageTemplate="5,10,15,20">
+					        
+					        <p:column>
+					        	<p:graphicImage name="user_logo_small.png" />
+					        	<span class="profileCardFirst"><h:outputText value="#{p.firstName}" /> </span>
+					        	<span class="profileCardLast"><h:outputText value="#{p.lastName}" /></span>
+					        	<span class="profileCardButton"><p:commandButton value="Voir le profil" action="#{person.showPerson(p.id)}"/></span>
+					        </p:column>
+					 
+					    </p:dataTable>
+					</h:form>
+				</div>
+	            
         </ui:define>
         <ui:define name="title">CV3000 - Person List</ui:define>
     </ui:composition>

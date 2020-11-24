@@ -7,17 +7,17 @@
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-        	<h1>Connection</h1>
+        	<h1>Connexion</h1>
         	<h:form id="loginForm">
 	            <h:panelGrid columns="2" cellpadding="5">
 		            <h:outputLabel for="email" value="Email" />
-		            <p:inputText id="email" value="#{login.email}" required="true" label="email" />
+		            <p:inputText id="email" value="#{user.email}" required="true" label="email" />
 		             
 		            <h:outputLabel for="password" value="Mot de passe" />
-		            <p:password id="password" value="#{login.password}" required="true" label="password" />
+		            <p:password id="password" value="#{user.password}" required="true" label="password" />
 		             
 		            <f:facet name="footer">
-		                <p:commandButton value="Connection" update="growl" action="#{login.login()}"/>
+		                <p:commandButton value="Connection" update="growl" action="#{user.login()}"/>
 		            </f:facet>  
 	        	</h:panelGrid>
 	        </h:form>

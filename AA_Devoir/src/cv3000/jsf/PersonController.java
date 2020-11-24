@@ -24,35 +24,50 @@ public class PersonController implements Serializable {
 	@Inject
 	IActivityManager activityManager;
 	
-	String name;
+	Person personToShow;
 	
-	Collection<Person> personsFinding;
-	
-	public String getName() {
-		return this.name;
+	public String showPerson(Long id) {
+		personToShow = personManager.getPersonById(id);
+		return "person";		
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public String savePerson() {
+		personManager.updatePerson(personToShow);
+		return "person";		
 	}
 	
-	public Collection<Person> getPersonsFinding(){
-		return this.personsFinding;
+	public String addPerson() {
+		personToShow = new Person();
+		return "addPerson";		
 	}
 	
-	public void setPersonsFinding(Collection<Person> personsFinding) {
-		this.personsFinding = personsFinding;
+	public String editPerson(Person person) {
+		personToShow = person;
+		return "editPerson";		
 	}
 	
+	public String editActivities(Person person) {
+		personToShow = person;
+		return "editActivities";		
+	}
+	
+	public String saveActivities() {
+		return "person";		
+	}
+
+	public Person getPersonToShow() {
+		return personToShow;
+	}
+
+	public void setPersonToShow(Person personToShow) {
+		this.personToShow = personToShow;
+	}
+
 	public Collection<Person> getPersons() {
 		return personManager.getAllPersons();
 	}
 	
 	public Collection<Activity> getActivities(long id) {
 		return personManager.getPersonById(id).getActivities();
-	}
-	
-	public void findPersonsbyName(){
-		setPersonsFinding(personManager.getPersonsByName(name));
 	}
 }

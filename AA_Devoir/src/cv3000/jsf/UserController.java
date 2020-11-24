@@ -11,9 +11,9 @@ import javax.inject.Named;
 import cv3000.models.Person;
 import cv3000.services.IUser;
 
-@Named("login")
+@Named("user")
 @SessionScoped
-public class LoginController implements Serializable {
+public class UserController implements Serializable {
 	
 
 	private static final long serialVersionUID = 1L;

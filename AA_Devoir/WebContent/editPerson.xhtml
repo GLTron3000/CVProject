@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template/layout.xhtml">
+        <ui:define name="content">
+            <h1>Modifier détails personnels</h1>
+			<h:form>
+				<div class="ui-fluid">
+			        <div class="p-field">
+			            <p:outputLabel for="firstname" value="Prénom" />
+			            <p:inputText id="firstname" value="#{person.personToShow.firstName}"/>
+			        </div>
+			        <div class="p-field">
+			            <p:outputLabel for="lastname" value="Nom" />
+			            <p:inputText id="lastname" value="#{person.personToShow.lastName}"/>
+			        </div>
+			        <div class="p-field">
+			            <p:outputLabel for="birthdate" value="Date de naissance" />
+			            <p:datePicker id="birthdate" value="#{person.personToShow.birthDate}" />
+			        </div>
+			        <div class="p-field">
+			            <p:outputLabel for="email" value="Email" type="email"/>
+			            <p:inputText id="email" value="#{person.personToShow.email}"/>
+			        </div>
+			        <div class="p-field">
+			            <p:outputLabel for="website" value="Site web" />
+			            <p:inputText id="website" value="#{person.personToShow.webSite}"/>
+			        </div>
+			        <div class="p-field">
+			            <p:outputLabel for="password" value="Mot de passe" type="password"/>
+			            <p:inputText id="password" value="#{person.personToShow.password}"/>
+			        </div>
+			        <p:commandButton action="#{person.savePerson()}" value="Sauvegarder" />
+		            <p:linkButton outcome="account" value="Annuler" />
+			    </div>
+			</h:form>
+        </ui:define>
+        <ui:define name="title">CV3000 - Compte</ui:define>
+    </ui:composition>
+
+</html>

@@ -48,16 +48,16 @@
                     <li><h:link outcome="about">A Propos</h:link></li>
                 </ul>
                 
-                <ui:fragment rendered="#{login.isLoggedIn()}">
+                <ui:fragment rendered="#{user.isLoggedIn()}">
                 	<ul class="nav navbar-nav navbar-right">
 	                	<li><h:link outcome="account">Compte</h:link></li>
-	                	<li><p:commandButton value="Déconnection" update="growl" action="#{login.logout()}"/></li>
+	                	<li><p:commandButton value="Déconnexion" update="growl" action="#{user.logout()}"/></li>
                 	</ul>
                 </ui:fragment>
                 
-                <ui:fragment rendered="#{login.isLoggedIn() == false}">
+                <ui:fragment rendered="#{user.isLoggedIn() == false}">
                 	<ul class="nav navbar-nav navbar-right">
-	                	<li><h:link outcome="login">Connection</h:link></li>
+	                	<li><h:link outcome="login">Connexion</h:link></li>
                 	</ul>
                 </ui:fragment>
                 

@@ -8,6 +8,7 @@
     xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <title><ui:insert name="title">CV 3000</ui:insert></title>
+    <h:outputStylesheet name="style.css" />
     <h:outputStylesheet library="webjars"
         name="bootstrap/3.3.7/css/bootstrap.min-jsf.css" />
     <h:outputScript library="webjars"
@@ -19,21 +20,21 @@
 
     <div class="container">
 
-    <ui:include src="/template/navbar.xhtml" />
-
-    <div>
-        <ui:insert name="content">
-        </ui:insert>
-        <h:messages />
-    </div>
-
-    <footer class="page-footer">
-        <div class="footer-copyright text-center py-3">
-            <ui:insert name="footer">
-                <span>CV 3000 - © 2020</span>
-            </ui:insert>
-        </div>
-    </footer>
+	    <ui:include src="/template/navbar.xhtml" />
+	
+	    <div>
+	        <ui:insert name="content">
+	        </ui:insert>
+	        <h:messages />
+	    </div>
+	
+	    <footer class="page-footer">
+	        <div class="footer-copyright text-center py-3">
+	            <ui:insert name="footer">
+	                <span>CV 3000 - © 2020</span>
+	            </ui:insert>
+	        </div>
+	    </footer>
     </div>
 </h:body>
 </html>

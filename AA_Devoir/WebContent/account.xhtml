@@ -7,10 +7,10 @@
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1><h:outputText value="Bienvenue #{login.user.firstName}" /></h1>
-            <p:commandButton value="Ajouter un compte"/>
-            <p:commandButton value="Modifier CV"/>
-            <p:commandButton value="Modifier détails personnels"/>
+            <h1>Bienvenue <h:outputText value="#{user.user.firstName}" /></h1>
+            <p:commandButton value="Ajouter un compte" action="#{person.addPerson()}"/>
+            <p:commandButton value="Modifier CV" action="#{person.editActivities(user.user)}"/>
+            <p:commandButton value="Modifier détails personnels" action="#{person.editPerson(user.user)}"/>
         </ui:define>
         <ui:define name="title">CV3000 - Compte</ui:define>
     </ui:composition>

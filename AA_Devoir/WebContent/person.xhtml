@@ -7,8 +7,28 @@
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
             <h1>
-                <h:outputText value="a Person Page" />
+                <span><h:outputText value="#{person.personToShow.firstName}" /></span>
+                <span><h:outputText value="#{person.personToShow.lastName}" /></span>
             </h1>
+            
+            <hr/>
+            <h2>Détails</h2>
+            <p><strong>Date de naissance: </strong> <h:outputText value="#{person.personToShow.birthDate}" /></p>
+            <p><strong>Email: </strong> <h:outputText value="#{person.personToShow.email}" /></p>
+            <p><strong>Site web: </strong> <h:outputText value="#{person.personToShow.webSite}" /></p>
+            
+            <hr/>
+            <h2>CV</h2>
+            <ul>
+            	<ui:repeat value="#{person.personToShow.activities}" var="a">
+                    <li>
+                    	<strong><h:outputText value="#{a.year}" /></strong>
+                    	-
+                    	<h:outputText value="#{a.title}" />
+                    </li>
+                </ui:repeat>
+            </ul>
+            
         </ui:define>
         <ui:define name="title">CV3000 - Person</ui:define>
     </ui:composition>
