@@ -12,8 +12,6 @@
     <h:outputStylesheet library="webjars"
         name="bootstrap/3.3.7/css/bootstrap.min-jsf.css" />
     <h:outputScript library="webjars"
-        name="jquery/1.11.1/jquery.js" />
-    <h:outputScript library="webjars"
         name="bootstrap/3.3.7/js/bootstrap.js" />
 </h:head>
 <h:body>
@@ -21,12 +19,16 @@
     <div class="container">
 
 	    <ui:include src="/template/navbar.xhtml" />
+	    
+	    <hr/>
 	
 	    <div>
 	        <ui:insert name="content">
 	        </ui:insert>
 	        <h:messages />
 	    </div>
+	    
+	    <hr/>
 	
 	    <footer class="page-footer">
 	        <div class="footer-copyright text-center py-3">

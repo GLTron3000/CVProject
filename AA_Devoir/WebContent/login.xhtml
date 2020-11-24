@@ -9,18 +9,19 @@
         <ui:define name="content">
         	<h1>Connexion</h1>
         	<h:form id="loginForm">
-	            <h:panelGrid columns="2" cellpadding="5">
-		            <h:outputLabel for="email" value="Email" />
-		            <p:inputText id="email" value="#{user.email}" required="true" label="email" />
-		             
-		            <h:outputLabel for="password" value="Mot de passe" />
-		            <p:password id="password" value="#{user.password}" required="true" label="password" />
-		             
-		            <f:facet name="footer">
-		                <p:commandButton value="Connection" update="growl" action="#{user.login()}"/>
-		            </f:facet>  
-	        	</h:panelGrid>
-	        </h:form>
+				<div class="ui-fluid">
+					<p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<h:outputLabel for="email" value="Email" />
+			            <p:inputText id="email" value="#{user.email}" required="true" label="email" />
+			             
+			            <h:outputLabel for="password" value="Mot de passe" />
+			            <p:password id="password" value="#{user.password}" required="true" label="password" />
+			             
+			            <span/>
+			            <p:commandButton value="Connexion" update="growl" action="#{user.login()}"/>
+					</p:panelGrid>
+				</div>
+			</h:form >
 	        
         </ui:define>
         <ui:define name="title">CV3000 - Login</ui:define>

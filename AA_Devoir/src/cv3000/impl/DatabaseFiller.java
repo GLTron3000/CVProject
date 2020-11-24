@@ -2,6 +2,7 @@ package cv3000.impl;
 
 import java.text.DateFormat;
 import java.text.Normalizer;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -33,12 +34,12 @@ public class DatabaseFiller {
 	IActivityManager am;
 
 	@PostConstruct
-	public void init() {
+	public void init() throws ParseException {
 		fillDB(100, 4);
 		addAdmin();
 	}
 	
-	public void fillDB(int nbOfPersons, int nbOfMaxActivities) {
+	public void fillDB(int nbOfPersons, int nbOfMaxActivities) throws ParseException {
 		
 		if (!pm.getAllPersons().isEmpty()) {
 			System.out.println("[DBFILL] Data is present, data fill aborted !");
@@ -52,7 +53,7 @@ public class DatabaseFiller {
 			
 			p.setFirstName(firstname);
 			p.setLastName(lastname);
-			p.setBirthDate(getRandomDate());
+			p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse(getRandomDate()));
 			p.setEmail(Normalizer.normalize(firstname.toLowerCase()+"."+lastname.toLowerCase()+"."+nbOfPersons+"@mail.fr", Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", ""));
 			p.setWebSite(Normalizer.normalize(firstname.toLowerCase()+"-"+lastname.toLowerCase()+".fr", Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", ""));
 			p.setPassword("1234");
@@ -109,11 +110,11 @@ public class DatabaseFiller {
 		return ActivityType.values()[rand];
 	}
 	
-	private void addAdmin() {
+	private void addAdmin() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Admin");
 		p.setLastName("Admin");
-		p.setBirthDate("1950/12/22");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("1950/12/22"));
 		p.setEmail("admin@admin.admin");
 		p.setWebSite("cv3000.fr");
 		p.setPassword("1234");

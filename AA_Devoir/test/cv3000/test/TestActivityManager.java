@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
@@ -23,12 +26,12 @@ public class TestActivityManager extends BaseJunit5 {
 	IActivityManager am;
 
 	@Test
-	void testAddActivity() {
+	void testAddActivity() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("James");
 		p.setLastName("Cameron");
 		p.setEmail("james@cameron.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("avatar");
 		
 		pm.createPerson(p);
@@ -48,12 +51,12 @@ public class TestActivityManager extends BaseJunit5 {
 	}
 		
 	@Test
-	void testRemoveActivity() {
+	void testRemoveActivity() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("James");
 		p.setLastName("James");
 		p.setEmail("james@james.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("OSS117");
 		
 		pm.createPerson(p);
@@ -75,12 +78,12 @@ public class TestActivityManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testUpdateActivity() {
+	void testUpdateActivity() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Jean");
 		p.setLastName("Bond");
 		p.setEmail("jean@bond.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("Bayonne");
 		
 		pm.createPerson(p);
@@ -104,12 +107,12 @@ public class TestActivityManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testGetActivityById(){
+	void testGetActivityById() throws ParseException{
 		Person p = new Person();
 		p.setFirstName("Arthur");
 		p.setLastName("LeRoi");
 		p.setEmail("arthur@leroi.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		
 		pm.createPerson(p);
@@ -131,12 +134,12 @@ public class TestActivityManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testGetActivityByTitle(){
+	void testGetActivityByTitle() throws ParseException{
 		Person p = new Person();
 		p.setFirstName("Arthur2");
 		p.setLastName("LeRoi3");
 		p.setEmail("arthur2@leroi.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		
 		pm.createPerson(p);

@@ -2,6 +2,7 @@ package cv3000.models;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.inject.Named;
 import javax.persistence.CascadeType;
@@ -42,7 +43,7 @@ public class Person implements Serializable{
     private String webSite;
 	
 	@Column(nullable = false)
-    private String birthDate;
+    private Date birthDate;
 	
 	@Column(nullable = false)
     private String password;
@@ -54,7 +55,7 @@ public class Person implements Serializable{
 		super();
 	}
 	
-	public Person(Long id, String firstName, String lastName, String email, String webSite, String birthDate, String password, Collection<Activity> activities) {
+	public Person(Long id, String firstName, String lastName, String email, String webSite, Date birthDate, String password, Collection<Activity> activities) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -106,11 +107,11 @@ public class Person implements Serializable{
 		this.webSite = webSite;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 

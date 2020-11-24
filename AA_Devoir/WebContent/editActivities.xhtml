@@ -8,36 +8,66 @@
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
             <h1>Modifier CV</h1>
+            
+            <p:dataTable value="#{person.personToShow.activities}" var="a">
+            
+             	<p:column headerText="Titre">
+			        <h:outputText value="#{a.title}" />
+			    </p:column>
+			    
+			    <p:column headerText="Description">
+			        <h:outputText value="#{a.description}" />
+			    </p:column>
+			    
+			    <p:column headerText="Web">
+			        <h:outputText value="#{a.webAdress}" />
+			    </p:column>
+			    
+			    <p:column headerText="Année">
+			        <h:outputText value="#{a.year}" />
+			    </p:column>
+			    
+			    <p:column headerText="Type">
+			        <h:outputText value="#{a.type}" />
+			    </p:column>
+			    
+			    <p:column headerText="Action">
+			        <p:commandButton action="#{person.savePerson()}" value="Supprimer" icon="pi pi-times-circle"/>
+			    </p:column>
+
+            </p:dataTable>
+            
+            <hr/>
+            
 			<h:form>
 				<div class="ui-fluid">
-			        <div class="p-field">
-			            <p:outputLabel for="firstname" value="Prénom" />
-			            <p:inputText id="firstname" value="#{person.personToShow.firstName}"/>
-			        </div>
-			        <div class="p-field">
-			            <p:outputLabel for="lastname" value="Nom" />
-			            <p:inputText id="lastname" value="#{person.personToShow.lastName}"/>
-			        </div>
-			        <div class="p-field">
-			            <p:outputLabel for="birthdate" value="Date de naissance" />
-			            <p:datePicker id="birthdate" value="#{person.personToShow.birthDate}" />
-			        </div>
-			        <div class="p-field">
-			            <p:outputLabel for="email" value="Email" type="email"/>
-			            <p:inputText id="email" value="#{person.personToShow.email}"/>
-			        </div>
-			        <div class="p-field">
-			            <p:outputLabel for="website" value="Site web" />
-			            <p:inputText id="website" value="#{person.personToShow.webSite}"/>
-			        </div>
-			        <div class="p-field">
-			            <p:outputLabel for="password" value="Mot de passe" type="password"/>
-			            <p:inputText id="password" value="#{person.personToShow.password}"/>
-			        </div>
-			        <p:commandButton action="#{person.savePerson()}" value="Sauvegarder" />
-		            <p:linkButton outcome="account" value="Annuler" />
+					<p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:outputLabel for="title" value="Titre" />
+				        <p:inputText id="title" value="#{person.activityToShow.title}" required="true"/>
+				        
+				        <p:outputLabel for="description" value="Description" />
+				        <p:inputText id="description" value="#{person.activityToShow.description}" required="true"/>
+				        
+				        <p:outputLabel for="web" value="Site web" />
+				        <p:inputText id="web" value="#{person.activityToShow.webAdress}" required="true"/>
+				        
+				        <p:outputLabel for="year" value="Année" />
+				        <p:datePicker id="year" value="#{person.activityToShow.year}" required="true" pattern="yyyy"/>
+				        
+				        <p:outputLabel for="type" value="Type" />
+				        <p:selectOneMenu id="type" value="#{person.activityToShow.type}" required="true">
+		        			<f:selectItems value="#{data.activityType}" />
+				        </p:selectOneMenu>  
+				        				        
+				        <span/>
+
+				        <p:commandButton action="#{person.addActivity()}" value="Ajouter" update="growl"/>
+					</p:panelGrid>
 			    </div>
 			</h:form>
+			
+			<p:linkButton outcome="account" value="Retour" />
+			
         </ui:define>
         <ui:define name="title">CV3000 - Compte</ui:define>
     </ui:composition>

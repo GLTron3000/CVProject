@@ -12,11 +12,10 @@
 				    <h:form>
 				    	<div class="ui-inputgroup">
 				            <p:inputText id="searchValueInput" value="#{search.searchValue}" placeholder="Nom ou prénom" required="true"/>
-				            <!-- Très laid mais p:selectOneMenu marche juste pas et j'arrive pas trouver pourquoi -->
-				            <h:selectOneMenu id="searchTypeSelect" value="#{search.searchType}" required="true">
+				            <p:selectOneMenu id="searchTypeSelect" value="#{search.searchType}" required="true">
 					            <f:selectItem itemLabel="Prenom" itemValue="firstname" />
 					            <f:selectItem itemLabel="Nom" itemValue="lastname" />
-					        </h:selectOneMenu>  
+					        </p:selectOneMenu>  
 				            <p:commandButton value="Rechercher" action="#{search.search()}" update="result-table"/>
 					    </div>
 					    <hr/>

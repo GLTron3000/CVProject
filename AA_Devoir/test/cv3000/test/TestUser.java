@@ -2,6 +2,9 @@ package cv3000.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
@@ -16,13 +19,13 @@ public class TestUser extends BaseJunit5 {
     IPersonManager pm;
     
     @Test
-    void testLoginUser() {
+    void testLoginUser() throws ParseException {
     	IUser user = lookup(BASE + "/user", IUser.class);
     	Person p = new Person();
 		p.setFirstName("Jean");
 		p.setLastName("Pierre");
 		p.setEmail("jean@pierre.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("123");
 		
 		pm.createPerson(p);
@@ -45,12 +48,12 @@ public class TestUser extends BaseJunit5 {
     }
 
     @Test
-    void testLogoutUser() {
+    void testLogoutUser() throws ParseException {
     	Person p = new Person();
 		p.setFirstName("Jean");
 		p.setLastName("Paul");
 		p.setEmail("jean@paul.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("123");
 		
 		pm.createPerson(p);

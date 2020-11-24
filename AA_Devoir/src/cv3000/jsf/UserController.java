@@ -53,7 +53,7 @@ public class UserController implements Serializable {
 	
 	public String logout() {
 		user.logout();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Déconnection", "aurevoir !"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Déconnexion", "aurevoir !"));
 		return "index";
 	}
 

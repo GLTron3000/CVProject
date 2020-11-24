@@ -2,6 +2,9 @@ package cv3000.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
@@ -15,12 +18,12 @@ public class TestPersonManager extends BaseJunit5 {
 	IPersonManager pm;
 	
 	@Test
-	void testCreatePerson() {
+	void testCreatePerson() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Jean");
 		p.setLastName("Pierre");
 		p.setEmail("jean@pierre.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("123");
 		
 		pm.createPerson(p);
@@ -30,12 +33,12 @@ public class TestPersonManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testRemovePerson() {
+	void testRemovePerson() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Jean");
 		p.setLastName("Paul");
 		p.setEmail("jean@paul.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("123");
 		
 		pm.createPerson(p);
@@ -48,12 +51,12 @@ public class TestPersonManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testUpdatePerson() {	
+	void testUpdatePerson() throws ParseException {	
 		Person p = new Person();
 		p.setFirstName("Jean");
 		p.setLastName("Jean");
 		p.setEmail("jean@jean.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("123");
 		
 		pm.createPerson(p);
@@ -66,12 +69,12 @@ public class TestPersonManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testGetPersonByEmail() {
+	void testGetPersonByEmail() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Arthur");
 		p.setLastName("LeRoi");
 		p.setEmail("arthur@leroi.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		
 		pm.createPerson(p);
@@ -82,12 +85,12 @@ public class TestPersonManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testGetPersonsByFirstName() {
+	void testGetPersonsByFirstName() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Arthur2");
 		p.setLastName("LeRoi3");
 		p.setEmail("arthur2@leroi.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		
 		pm.createPerson(p);
@@ -98,12 +101,12 @@ public class TestPersonManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testGetPersonsByLastName() {
+	void testGetPersonsByLastName() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Arthur3");
 		p.setLastName("LeRoi3");
 		p.setEmail("arthur3@leroi.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		
 		pm.createPerson(p);
@@ -114,12 +117,12 @@ public class TestPersonManager extends BaseJunit5 {
 	}
 	
 	@Test
-	void testGetPersonsByName() {
+	void testGetPersonsByName() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Arthur3");
 		p.setLastName("LeRoi3");
 		p.setEmail("arthur3@leroi.com");
-		p.setBirthDate("01/01/2000");
+		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		
 		pm.createPerson(p);

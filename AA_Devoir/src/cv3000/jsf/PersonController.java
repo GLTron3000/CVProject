@@ -26,6 +26,16 @@ public class PersonController implements Serializable {
 	
 	Person personToShow;
 	
+	Activity activityToShow;
+	
+	public Activity getActivityToShow() {
+		return activityToShow;
+	}
+
+	public void setActivityToShow(Activity activityToShow) {
+		this.activityToShow = activityToShow;
+	}
+
 	public String showPerson(Long id) {
 		personToShow = personManager.getPersonById(id);
 		return "person";		
@@ -46,8 +56,15 @@ public class PersonController implements Serializable {
 		return "editPerson";		
 	}
 	
+	public String addActivity() {
+		activityManager.addActivity(activityToShow, personToShow);
+		activityToShow = new Activity();
+		return "editActivities";		
+	}
+	
 	public String editActivities(Person person) {
 		personToShow = person;
+		activityToShow = new Activity();
 		return "editActivities";		
 	}
 	
