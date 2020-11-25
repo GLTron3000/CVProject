@@ -34,7 +34,10 @@ public class ActivityManager implements IActivityManager {
 	@Override
 	public void removeActivity(Long id) {
 		Activity activity = getActivityById(id);
-		if (activity != null) em.remove(activity);
+		if (activity != null) {
+			System.out.println("REMOVE ACTIVITY "+id);
+			em.remove(activity);
+		}
 	}
 
 	@Override

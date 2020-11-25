@@ -1,5 +1,6 @@
 package cv3000.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import java.io.Serializable;
@@ -42,7 +43,7 @@ public class Activity implements Serializable{
 	//pattern de web site
 	private String webAdress;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Person person;
 	
 	public Activity() {

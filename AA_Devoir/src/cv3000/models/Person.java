@@ -48,7 +48,7 @@ public class Person implements Serializable{
 	@Column(nullable = false)
     private String password;
 	
-	@OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = CascadeType.MERGE, orphanRemoval = true)
 	private Collection<Activity> activities;
 	
 	public Person() {

@@ -25,7 +25,7 @@ public class DatabaseFiller {
 	
 	String[] lastnameList = {"Colbert", "Delisle", "Manaudou", "Lortie", "Charbonneau", "Blaise", "Gilson", "Mesny", "Crevier", "Baugé"};
 	String[] firstnameList = {"Jean-Marc", "Jean-Guy", "Pierre", "William", "Geoffroy", "Égide", "Godefroy", "Josué", "Gilles", "Gérald"};
-	String[] jobList = {"Referee", "Physician", "Hairdresser", "Web Developer", "Marketing Manager", "Plumber", "Customer Service Representative", "Art Director", "College Professor", "Computer Systems Analyst", "Registered Nurse", "Computer Programmer"};
+	String[] jobList = {"Vendeur", "Chanteur", "Vétérinaire", "Développeur", "Électricien", "Coiffeur", "Dentiste", "Déménageur", "Politicien", "Postier", "Docteur", "Pompier"};
 		
 	@Inject
 	IPersonManager pm;
