@@ -29,7 +29,10 @@
 				        <p:outputLabel for="password" value="Mot de passe" />
 				        <p:inputText id="password" value="#{person.personToShow.password}" type="password" required="true"/>
 				        
-				        <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
+				        <p:separator style="border-color:#FFF" />
+ 						<h6>*champs obligatoires</h6>
+				        
+				        <p:linkButton styleClass="red-button" outcome="account" value="Annuler" icon="pi pi-times"/>
 				        <p:commandButton action="#{person.savePerson()}" value="Sauvegarder" update="growl" icon="pi pi-check"/>
 					</p:panelGrid>
 			    </div>

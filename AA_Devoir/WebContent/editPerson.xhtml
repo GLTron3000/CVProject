@@ -7,9 +7,9 @@
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>Modifier Compte</h1>
+            <h1>Modifier profil</h1>
             <p:steps activeIndex="0">
-			    <p:menuitem value="Détails personnels" />
+			    <p:menuitem value="Infos personnelles" />
 			    <p:menuitem value="CV" />
 			</p:steps>
 			<h:form>
@@ -35,11 +35,13 @@
 				        
 				        <span/>
 				        
+ 						<h6>*champs obligatoires</h6>
+ 						
 				        <p:commandButton action="#{person.updatePerson()}" value="Sauvegarder les modifications" update="growl" icon="pi pi-save"/>
 					</p:panelGrid>
 			    </div>
 			    <hr/>
-			    <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
+			    <p:linkButton styleClass="red-button" outcome="account" value="Annuler" icon="pi pi-times"/>
 			    <p:commandButton action="#{activity.editActivities(person.personToShow)}" value="Suivant" icon="pi pi-angle-right"/>
 			</h:form>
         </ui:define>

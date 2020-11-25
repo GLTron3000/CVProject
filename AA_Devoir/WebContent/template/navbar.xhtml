@@ -15,12 +15,12 @@
 		    
 		    	<p:menuitem value="Rechercher" outcome="search" icon="pi pi-search" />
 		        		    
-		    	<p:menuitem value="A Propos" outcome="about" icon="pi pi-info" />    
+		    	<p:menuitem value="À propos" outcome="about" icon="pi pi-info" />    
 		    	
 		    	<f:facet name="options">
 		    		<ui:fragment rendered="#{user.isLoggedIn()}">
 		    			<p:linkButton value="Compte" outcome="account" icon="pi pi-user" />
-		            	<p:commandButton value="Déconnexion" action="#{user.logout()}" icon="pi pi-times" />
+		            	<p:commandButton styleClass="red-button" value="Déconnexion" action="#{user.logout()}" icon="pi pi-times" />
 		            </ui:fragment>
 		            
 		            <ui:fragment rendered="#{user.isLoggedIn() == false}">
