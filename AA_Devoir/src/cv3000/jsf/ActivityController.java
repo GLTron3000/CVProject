@@ -46,6 +46,10 @@ public class ActivityController implements Serializable {
 		return personToShow;
 	}
 
+	public void setPersonToShow(Person personToShow) {
+		this.personToShow = personToShow;
+	}
+
 	public Activity getActivityToShow() {
 		return activityToShow;
 	}
@@ -55,7 +59,7 @@ public class ActivityController implements Serializable {
 	}
 
 	public String addActivity() {
-		System.out.println("ADD ");
+		System.out.println("ADD " + activityToShow.getTitle() + " " + activityToShow.getYear());
 		activityManager.addActivity(activityToShow, personToShow);
 		personToShow.getActivities().add(activityToShow);
 		activityToShow = new Activity();

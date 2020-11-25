@@ -14,7 +14,7 @@
 			    <p:menuitem value="CV" />
 			</p:steps>
 			
-			<h:form>
+			<h:form id="activity-form">
             
 	            <p:dataTable id="activity-table" value="#{activity.personToShow.activities}" var="a">
 	            
@@ -46,7 +46,7 @@
 	         
 	            <hr/>
 	            
-	         <h:form>
+	         <h:form id="activity-form-add">
             
 				<div class="ui-fluid">
 					<p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
@@ -54,10 +54,10 @@
 				        <p:inputText id="title" value="#{activity.activityToShow.title}" required="true"/>
 				        
 				        <p:outputLabel for="description" value="Description" />
-				        <p:inputText id="description" value="#{activity.activityToShow.description}" required="true"/>
+				        <p:inputText id="description" value="#{activity.activityToShow.description}"/>
 				        
 				        <p:outputLabel for="web" value="Site web" />
-				        <p:inputText id="web" value="#{activity.activityToShow.webAdress}" required="true"/>
+				        <p:inputText id="web" value="#{activity.activityToShow.webAdress}"/>
 				        
 				        <p:outputLabel for="year" value="Année" />
 				        <p:datePicker id="year" value="#{activity.activityToShow.year}" required="true" pattern="yyyy"/>
@@ -69,7 +69,7 @@
 				        				        
 				        <span/>
 
-				        <p:commandButton action="#{activity.addActivity()}" value="Ajouter" update="growl" icon="pi pi-plus"/>
+				        <p:commandButton type="submit" action="#{activity.addActivity()}" value="Ajouter" update="growl :activity-form:activity-table" icon="pi pi-plus"/>
 					</p:panelGrid>
 			    </div>
 			    

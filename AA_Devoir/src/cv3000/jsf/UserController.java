@@ -33,11 +33,9 @@ public class UserController implements Serializable {
 		this.email = email;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
-
 
 	public void setPassword(String password) {
 		this.password = password;
@@ -54,7 +52,7 @@ public class UserController implements Serializable {
 	public String logout() {
 		user.logout();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Déconnexion", "aurevoir !"));
-		return "index";
+		return "index?faces-redirect=true";
 	}
 
 	public String login() {

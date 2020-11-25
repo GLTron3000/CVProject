@@ -1,6 +1,5 @@
 package cv3000.impl;
 
-import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.inject.Inject;
 
@@ -29,7 +28,6 @@ public class User implements IUser {
         return true;
     }
 
-    @Remove
     public void logout () {
         this.isLogged = false;
         this.person = null;
