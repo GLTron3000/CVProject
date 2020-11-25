@@ -27,10 +27,13 @@
 					        rowsPerPageTemplate="6,12,18">
 					         					 
 					        <p:panel header="">
-					        	<p:graphicImage name="user_logo_small.png" />
-					        	<span class="profileCardFirst"><h:outputText value="#{p.firstName}" /> </span>
-					        	<span class="profileCardLast"><h:outputText value="#{p.lastName}" /></span>
-					            <span class="profileCardButton"><p:commandButton value="Voir le profil" action="#{person.showPerson(p.id)}"/></span>
+					        	<div class="profileCard">
+					        		<p:graphicImage class="profileCardImage" name="user_logo_small.png" />
+					        		<p class="profileCardFirst"><h:outputText value="#{p.firstName}" /> </p>
+						        	<p class="profileCardLast"><h:outputText value="#{p.lastName}" /></p>
+						            <span class="profileCardButton"><p:commandButton value="Voir le profil" action="#{person.showPerson(p.id)}"/></span>
+					        	</div>
+					        	
 					        </p:panel>
 					 
 					    </p:dataGrid>					   

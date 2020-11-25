@@ -62,6 +62,7 @@ public class SearchController implements Serializable {
 	}
 
 	public Collection<Person> getPersonsResult() {
+		if (personsResult == null) personsResult = personManager.getAllPersons();
 		return personsResult;
 	}
 

@@ -6,28 +6,22 @@
     xmlns:c="http://java.sun.com/jsp/jstl/core"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <ui:composition template="/template/layout.xhtml">
-        <ui:define name="content">
-        	<c:choose>
-        		<c:when test="#{user.isLoggedIn() eq true}">
-	        		<h1>Bienvenue <h:outputText value="#{user.user.firstName}" /></h1>
+    <ui:composition template="/template/secured.xhtml">
+        <ui:define name="securedContent">
+        	<h1>Bienvenue <h:outputText value="#{user.user.firstName}" /></h1>
 			        
-			        <h:form>
-						<div class="ui-fluid">
-							<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							
-								<p:commandButton value="Ajouter un compte" action="#{person.addPerson()}" icon="pi pi-user-plus"/>
-											            
-					            <p:commandButton styleClass="edit-button" value="Modifier mon compte" action="#{person.editPerson(user.user)}" icon="pi pi-pencil"/>
-					            
-							</p:panelGrid>
-						</div>
-					</h:form>
-				</c:when>
-				<c:otherwise>
-			        <p>Veuillez vous connecter pour accéder à cette page.</p>
-			    </c:otherwise>
-        	</c:choose>	
+	        <h:form>
+				<div class="ui-fluid">
+					<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					
+						<p:commandButton value="Ajouter un compte" action="#{person.addPerson()}" icon="pi pi-user-plus"/>
+									            
+			            <p:commandButton styleClass="edit-button" value="Modifier mon compte" action="#{person.editPerson(user.user)}" icon="pi pi-pencil"/>
+			            
+					</p:panelGrid>
+				</div>
+			</h:form>
+				
         </ui:define>
         <ui:define name="title">CView - Compte</ui:define>
     </ui:composition>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition  template="layout.xhtml">
+    	<ui:define name="content">
+        	<c:choose>
+        		<c:when test="#{user.isLoggedIn() eq true}">
+        			<ui:insert name="securedContent">
+	        		</ui:insert>
+    			</c:when>
+				<c:otherwise>
+					<div style="text-align: center;">
+			            <p>Veuillez vous connecter pour accéder à cette page.</p>
+			            <p:linkButton outcome="login" value="Connexion"/>
+		            </div>
+			        
+			    </c:otherwise>
+        	</c:choose>
+        </ui:define>
+	</ui:composition>
+
+</html>
