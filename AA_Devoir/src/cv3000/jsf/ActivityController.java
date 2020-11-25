@@ -18,7 +18,6 @@ import cv3000.services.IActivityManager;
 @SessionScoped
 public class ActivityController implements Serializable {
 	
-
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
