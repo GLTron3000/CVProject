@@ -9,3 +9,27 @@
 .profileCardButton {
 	float: right;
 }
+
+.red-button.ui-button.ui-state-default {
+    background-color: #d9534f;
+    border-color: #d9534f;
+    color: #fff;
+}
+
+.red-button.ui-button.ui-state-default:enabled:hover, 
+.red-button.ui-button.ui-state-default:focus {
+    background-color: #d43f3a;
+    border-color: #d9534f;
+}
+
+.green-button.ui-button.ui-state-default {
+    background-color: #4ed88c;
+    border-color: #4ed88c;
+    color: #fff;
+}
+
+.green-button.ui-button.ui-state-default:enabled:hover, 
+.green-button.ui-button.ui-state-default:focus {
+    background-color: #39d395;
+    border-color: #39d395;
+}

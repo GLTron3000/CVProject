@@ -8,8 +8,8 @@
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
 	            
-	            <div class="ui-g ui-fluid">
-				    <h:form>
+	            <div class="ui-g ui-fluid" >
+				    <h:form style="width:100%;">
 				    	<div class="ui-inputgroup">
 				            <p:inputText id="searchValueInput" value="#{search.searchValue}" placeholder="Nom ou prénom" required="true"/>
 				            <p:selectOneMenu id="searchTypeSelect" value="#{search.searchType}" required="true">
@@ -17,7 +17,7 @@
 					            <f:selectItem itemLabel="Nom" itemValue="lastname" />
 					            <f:selectItem itemLabel="Activité" itemValue="activity" />
 					        </p:selectOneMenu>  
-				            <p:commandButton value="Rechercher" action="#{search.search()}" update="result-table result-grid" icon="pi pi-search"/>
+				            <p:commandButton value="Rechercher" action="#{search.search()}" update="result-grid" icon="pi pi-search"/>
 					    </div>
 					    <hr/>
 					    <p:dataGrid id="result-grid"
@@ -33,25 +33,7 @@
 					            <span class="profileCardButton"><p:commandButton value="Voir le profil" action="#{person.showPerson(p.id)}"/></span>
 					        </p:panel>
 					 
-					    </p:dataGrid>
-					    <hr/>
-					    <h1>OU ?</h1>
-					    <hr/>
-					    <p:dataTable id="result-table"
-					    			 var="p" value="#{search.personsResult}" rows="10"
-					                 paginator="true"
-					                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					                 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} résultats"
-					                 rowsPerPageTemplate="5,10,15,20">
-					        
-					        <p:column>
-					        	<p:graphicImage name="user_logo_small.png" />
-					        	<span class="profileCardFirst"><h:outputText value="#{p.firstName}" /> </span>
-					        	<span class="profileCardLast"><h:outputText value="#{p.lastName}" /></span>
-					        	<span class="profileCardButton"><p:commandButton value="Voir le profil" action="#{person.showPerson(p.id)}"/></span>
-					        </p:column>
-					 
-					    </p:dataTable>
+					    </p:dataGrid>					   
 					</h:form>
 				</div>
 	            
