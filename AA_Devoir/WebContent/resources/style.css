@@ -33,3 +33,15 @@
     background-color: #39d395;
     border-color: #39d395;
 }
+
+.edit-button.ui-button.ui-state-default {
+    background-color: #3fbfa5;
+    border-color: #3fbfa5;
+    color: #fff;
+}
+
+.edit-button.ui-button.ui-state-default:enabled:hover, 
+.edit-button.ui-button.ui-state-default:focus {
+    background-color: #227866;
+    border-color: #227866;
+}
