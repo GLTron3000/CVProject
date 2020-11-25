@@ -7,67 +7,80 @@
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>Modifier CV</h1>
+            <h1>Modifier Compte</h1>
             
-            <p:dataTable value="#{person.personToShow.activities}" var="a">
-            
-             	<p:column headerText="Titre">
-			        <h:outputText value="#{a.title}" />
-			    </p:column>
-			    
-			    <p:column headerText="Description">
-			        <h:outputText value="#{a.description}" />
-			    </p:column>
-			    
-			    <p:column headerText="Web">
-			        <h:outputText value="#{a.webAdress}" />
-			    </p:column>
-			    
-			    <p:column headerText="Année">
-			        <h:outputText value="#{a.year}" />
-			    </p:column>
-			    
-			    <p:column headerText="Type">
-			        <h:outputText value="#{a.type}" />
-			    </p:column>
-			    
-			    <p:column headerText="Action">
-			        <p:commandButton action="#{person.savePerson()}" value="Supprimer" icon="pi pi-times-circle"/>
-			    </p:column>
-
-            </p:dataTable>
-            
-            <hr/>
-            
+            <p:steps activeIndex="1">
+			    <p:menuitem value="Détails personnels" />
+			    <p:menuitem value="CV" />
+			</p:steps>
+			
 			<h:form>
+            
+	            <p:dataTable id="activity-table" value="#{activity.personToShow.activities}" var="a">
+	            
+	            	<p:column style="width:20px">
+				        <p:rowToggler />
+				    </p:column>
+	            
+	             	<p:column headerText="Activités">
+				        <strong><h:outputText value="#{a.year}" /></strong>
+	                   	-
+	                   	<h:outputText value="#{a.title}" />
+	                   	(<h:outputText value="#{a.type}" />)
+				    </p:column>
+				    
+				    <p:rowExpansion>
+					    <p>Site web: <h:outputText value="#{a.webAdress}" /></p>
+					    <hr/>
+				    	<p><h:outputText value="#{a.description}" /></p>
+				    	
+				    </p:rowExpansion>
+				    			   			    
+				    <p:column headerText="Action" style="width:115px">
+				        <p:commandButton action="#{activity.removeActivity(a.id)}" value="Supprimer" icon="pi pi-times-circle" update="activity-table"/>
+				    </p:column>
+	
+	            </p:dataTable>
+	            
+	         </h:form>
+	         
+	            <hr/>
+	            
+	         <h:form>
+            
 				<div class="ui-fluid">
 					<p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
 						<p:outputLabel for="title" value="Titre" />
-				        <p:inputText id="title" value="#{person.activityToShow.title}" required="true"/>
+				        <p:inputText id="title" value="#{activity.activityToShow.title}" required="true"/>
 				        
 				        <p:outputLabel for="description" value="Description" />
-				        <p:inputText id="description" value="#{person.activityToShow.description}" required="true"/>
+				        <p:inputText id="description" value="#{activity.activityToShow.description}" required="true"/>
 				        
 				        <p:outputLabel for="web" value="Site web" />
-				        <p:inputText id="web" value="#{person.activityToShow.webAdress}" required="true"/>
+				        <p:inputText id="web" value="#{activity.activityToShow.webAdress}" required="true"/>
 				        
 				        <p:outputLabel for="year" value="Année" />
-				        <p:datePicker id="year" value="#{person.activityToShow.year}" required="true" pattern="yyyy"/>
+				        <p:datePicker id="year" value="#{activity.activityToShow.year}" required="true" pattern="yyyy"/>
 				        
 				        <p:outputLabel for="type" value="Type" />
-				        <p:selectOneMenu id="type" value="#{person.activityToShow.type}" required="true">
-		        			<f:selectItems value="#{data.activityType}" />
+				        <p:selectOneMenu id="type" value="#{activity.activityToShow.type}" required="true">
+		        			<f:selectItems value="#{activity.types}" />
 				        </p:selectOneMenu>  
 				        				        
 				        <span/>
 
-				        <p:commandButton action="#{person.addActivity()}" value="Ajouter" update="growl"/>
+				        <p:commandButton action="#{activity.addActivity()}" value="Ajouter" update="growl" icon="pi pi-plus"/>
 					</p:panelGrid>
 			    </div>
-			</h:form>
+			    
+			   </h:form>
+			    
+			    <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
+			    <p:linkButton outcome="editPerson" value="Retour" icon="pi pi-angle-left" />
+			    <p:linkButton outcome="person" value="Terminer" icon="pi pi-check"/>
+			    
 			
-			<p:linkButton outcome="account" value="Retour" />
-			
+						
         </ui:define>
         <ui:define name="title">CV3000 - Compte</ui:define>
     </ui:composition>

@@ -1,6 +1,7 @@
 package cv3000.jsf;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.enterprise.context.SessionScoped;
@@ -8,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import cv3000.models.Person;
+import cv3000.services.IActivityManager;
 import cv3000.services.IPersonManager;
 
 @Named("search")
@@ -19,20 +21,28 @@ public class SearchController implements Serializable {
 	@Inject
 	IPersonManager personManager;
 	
+	@Inject
+	IActivityManager activityManager;
+	
 	String searchValue;
 	
 	String searchType;
 	
 	Collection<Person> personsResult;
 		
-	public void search() {
+	public String search() {
 		System.out.println("[SEARCH CONTROLLER] search " + searchType + " " + searchValue);
 		switch (searchType) {
 			case "firstname": personsResult = personManager.getPersonsByFirstname(searchValue); break;
 			case "lastname": personsResult = personManager.getPersonsByLastName(searchValue); break;
-			// case "email": personsResult = personManager.getPersonsByEmail(searchValue); break;
+			case "activity": 
+				personsResult = new ArrayList<Person>();
+				activityManager.getActivitiesByTitle(searchValue).forEach(a -> personsResult.add(a.getPerson()));
+				break;
 			default: personsResult = personManager.getPersonsByFirstname(searchValue);
 		}
+		
+		return "search";
 	}
 
 	public String getSearchValue() {

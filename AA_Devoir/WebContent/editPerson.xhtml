@@ -7,7 +7,11 @@
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>Modifier détails personnels</h1>
+            <h1>Modifier Compte</h1>
+            <p:steps activeIndex="0">
+			    <p:menuitem value="Détails personnels" />
+			    <p:menuitem value="CV" />
+			</p:steps>
 			<h:form>
 				<div class="ui-fluid">
 					<p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
@@ -31,12 +35,11 @@
 				        
 				        <span/>
 				        
-					    <h:panelGroup>
-				            <p:linkButton outcome="account" value="Annuler" />
-				            <p:commandButton action="#{person.savePerson()}" value="Sauvegarder" update="growl"/>
-			            </h:panelGroup>
+				        <p:commandButton action="#{person.savePerson()}" value="Sauvegarder" update="growl"/>
 					</p:panelGrid>
 			    </div>
+			    <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
+			    <p:commandButton action="#{activity.editActivities(person.personToShow)}" value="Suivant" icon="pi pi-angle-right"/>
 			</h:form>
         </ui:define>
         <ui:define name="title">CV3000 - Compte</ui:define>

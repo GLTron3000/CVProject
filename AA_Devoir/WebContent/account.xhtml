@@ -14,10 +14,8 @@
 					<p:panelGrid columns="1" columnClasses="ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
 					
 						<p:commandButton value="Ajouter un compte" action="#{person.addPerson()}" icon="pi pi-user-plus"/>
-						
-			            <p:commandButton value="Modifier CV" action="#{person.editActivities(user.user)}" icon="pi pi-pencil"/>
-			            
-			            <p:commandButton value="Modifier détails personnels" action="#{person.editPerson(user.user)}" icon="pi pi-pencil"/>
+									            
+			            <p:commandButton value="Modifier compte" action="#{person.editPerson(user.user)}" icon="pi pi-pencil"/>
 			            
 					</p:panelGrid>
 				</div>

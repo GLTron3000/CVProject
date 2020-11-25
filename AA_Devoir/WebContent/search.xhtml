@@ -2,15 +2,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>
-                <h:outputText value="Search Page" />
-            </h1>
+	            
+	            <div class="ui-g ui-fluid">
+				    <h:form>
+				    	<div class="ui-inputgroup">
+				            <p:inputText id="searchValueInput" value="#{search.searchValue}" placeholder="Nom ou prénom" required="true"/>
+				            <p:selectOneMenu id="searchTypeSelect" value="#{search.searchType}" required="true">
+					            <f:selectItem itemLabel="Prenom" itemValue="firstname" />
+					            <f:selectItem itemLabel="Nom" itemValue="lastname" />
+					            <f:selectItem itemLabel="Activité" itemValue="activity" />
+					        </p:selectOneMenu>  
+				            <p:commandButton value="Rechercher" action="#{search.search()}" update="result-table result-grid" icon="pi pi-search"/>
+					    </div>
+					    <hr/>
+					    <p:dataGrid id="result-grid"
+					    	var="p" value="#{search.personsResult}" columns="3" layout="grid" rows="12" paginator="true"
+					        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					        currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} résultats"
+					        rowsPerPageTemplate="6,12,16">
+					         					 
+					        <p:panel header="">
+					        	<p:graphicImage name="user_logo_small.png" />
+					        	<span class="profileCardFirst"><h:outputText value="#{p.firstName}" /> </span>
+					        	<span class="profileCardLast"><h:outputText value="#{p.lastName}" /></span>
+					            <span class="profileCardButton"><p:commandButton value="Voir le profil" action="#{person.showPerson(p.id)}"/></span>
+					        </p:panel>
+					 
+					    </p:dataGrid>
+					    <hr/>
+					    <h1>OU ?</h1>
+					    <hr/>
+					    <p:dataTable id="result-table"
+					    			 var="p" value="#{search.personsResult}" rows="10"
+					                 paginator="true"
+					                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					                 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} résultats"
+					                 rowsPerPageTemplate="5,10,15,20">
+					        
+					        <p:column>
+					        	<p:graphicImage name="user_logo_small.png" />
+					        	<span class="profileCardFirst"><h:outputText value="#{p.firstName}" /> </span>
+					        	<span class="profileCardLast"><h:outputText value="#{p.lastName}" /></span>
+					        	<span class="profileCardButton"><p:commandButton value="Voir le profil" action="#{person.showPerson(p.id)}"/></span>
+					        </p:column>
+					 
+					    </p:dataTable>
+					</h:form>
+				</div>
+	            
         </ui:define>
-        <ui:define name="title">CV3000 - Recherche</ui:define>
+        <ui:define name="title">CV3000 - Person List</ui:define>
     </ui:composition>
 
 </html>

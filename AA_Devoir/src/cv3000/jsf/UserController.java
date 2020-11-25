@@ -60,7 +60,7 @@ public class UserController implements Serializable {
 	public String login() {
 		if(user.login(email, password)) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenue ", user.getPerson().getFirstName()));
-			return "account";
+			return "account?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erreur de connection", "Identifiants invalides"));
 			return "login";

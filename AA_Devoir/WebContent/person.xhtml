@@ -2,33 +2,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>
-                <span><h:outputText value="#{person.personToShow.firstName}" /></span>
-                <span><h:outputText value="#{person.personToShow.lastName}" /></span>
-            </h1>
+        
+        	<p:layout style="min-width:400px;min-height:300px;">
+			    <p:layoutUnit position="west" size="120">
+			        <p:graphicImage name="user_logo_small.png" />
+			    </p:layoutUnit>
+			 
+			    <p:layoutUnit position="center">
+			        <h1>
+		                <span><h:outputText value="#{person.personToShow.firstName}" /></span>
+		                <span><h:outputText value="#{person.personToShow.lastName}" /></span>
+		            </h1>
+		            
+		            <hr/>
+		            <h2>Détails</h2>
+		            <p><strong>Date de naissance: </strong> <h:outputText value="#{person.personToShow.birthDate}" /></p>
+		            <p><strong>Email: </strong> <h:outputText value="#{person.personToShow.email}" /></p>
+		            <p><strong>Site web: </strong> <h:outputText value="#{person.personToShow.webSite}" /></p>
+			    </p:layoutUnit>
+			</p:layout>
+            
             
             <hr/>
-            <h2>Détails</h2>
-            <p><strong>Date de naissance: </strong> <h:outputText value="#{person.personToShow.birthDate}" /></p>
-            <p><strong>Email: </strong> <h:outputText value="#{person.personToShow.email}" /></p>
-            <p><strong>Site web: </strong> <h:outputText value="#{person.personToShow.webSite}" /></p>
             
-            <hr/>
             <h2>CV</h2>
-            <ul>
-            	<ui:repeat value="#{person.personToShow.activities}" var="a">
-                    <li>
-                    	<strong><h:outputText value="#{a.year}" /></strong>
-                    	-
-                    	<h:outputText value="#{a.title}" />
-                    	(<h:outputText value="#{a.type}" />)
-                    </li>
-                </ui:repeat>
-            </ul>
+            <p:dataTable value="#{person.personToShow.activities}" var="a">
+	            
+            	<p:column style="width:20px">
+			        <p:rowToggler />
+			    </p:column>
+            
+             	<p:column headerText="Activités">
+			        <strong><h:outputText value="#{a.year}" /></strong>
+                   	-
+                   	<h:outputText value="#{a.title}" />
+                   	(<h:outputText value="#{a.type}" />)
+			    </p:column>
+			    
+			    <p:rowExpansion>
+				    <p>Site web: <h:outputText value="#{a.webAdress}" /></p>
+				    <hr/>
+			    	<p><h:outputText value="#{a.description}" /></p>
+			    	
+			    </p:rowExpansion>
+			    
+            </p:dataTable>
             
         </ui:define>
         <ui:define name="title">CV3000 - Person</ui:define>

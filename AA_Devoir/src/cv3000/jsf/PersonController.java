@@ -9,7 +9,6 @@ import javax.inject.Named;
 
 import cv3000.models.Activity;
 import cv3000.models.Person;
-import cv3000.services.IActivityManager;
 import cv3000.services.IPersonManager;
 
 @Named("person")
@@ -21,55 +20,27 @@ public class PersonController implements Serializable {
 	@Inject
 	IPersonManager personManager;
 	
-	@Inject
-	IActivityManager activityManager;
-	
 	Person personToShow;
 	
-	Activity activityToShow;
 	
-	public Activity getActivityToShow() {
-		return activityToShow;
-	}
-
-	public void setActivityToShow(Activity activityToShow) {
-		this.activityToShow = activityToShow;
-	}
-
 	public String showPerson(Long id) {
 		personToShow = personManager.getPersonById(id);
-		return "person";		
-	}
-	
-	public String savePerson() {
-		personManager.updatePerson(personToShow);
-		return "person";		
+		return "person?faces-redirect=true";		
 	}
 	
 	public String addPerson() {
 		personToShow = new Person();
-		return "addPerson";		
+		return "addPerson?faces-redirect=true";		
 	}
 	
-	public String editPerson(Person person) {
-		personToShow = person;
+	public String savePerson() {
+		personManager.updatePerson(personToShow);
 		return "editPerson";		
 	}
-	
-	public String addActivity() {
-		activityManager.addActivity(activityToShow, personToShow);
-		activityToShow = new Activity();
-		return "editActivities";		
-	}
-	
-	public String editActivities(Person person) {
+		
+	public String editPerson(Person person) {
 		personToShow = person;
-		activityToShow = new Activity();
-		return "editActivities";		
-	}
-	
-	public String saveActivities() {
-		return "person";		
+		return "editPerson?faces-redirect=true";		
 	}
 
 	public Person getPersonToShow() {
