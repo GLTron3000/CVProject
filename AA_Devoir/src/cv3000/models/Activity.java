@@ -36,7 +36,6 @@ public class Activity implements Serializable{
 	private String title;
 	
 	@Column(nullable = true)
-	@Size(min = 5, max = 4000)
 	private String description;
 
 	@Column(nullable = true)

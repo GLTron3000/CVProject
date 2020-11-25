@@ -14,43 +14,10 @@
 			    <p:menuitem value="CV" />
 			</p:steps>
 			
-			<h:form id="activity-form">
-            
-	            <p:dataTable id="activity-table" value="#{activity.personToShow.activities}" var="a">
-	            
-	            	<p:column style="width:20px">
-				        <p:rowToggler />
-				    </p:column>
-	            
-	             	<p:column headerText="Activités">
-				        <strong><h:outputText value="#{a.year}" /></strong>
-	                   	-
-	                   	<h:outputText value="#{a.title}" />
-	                   	(<h:outputText value="#{a.type}" />)
-				    </p:column>
-				    
-				    <p:rowExpansion>
-					    <p>Site web: <h:outputText value="#{a.webAdress}" /></p>
-					    <hr/>
-				    	<p><h:outputText value="#{a.description}" /></p>
-				    	
-				    </p:rowExpansion>
-				    			   			    
-				    <p:column headerText="Action" style="width:115px">
-				        <p:commandButton action="#{activity.removeActivity(a.id)}" value="Supprimer" icon="pi pi-times-circle" update="activity-table"/>
-				    </p:column>
-	
-	            </p:dataTable>
-	            
-	         </h:form>
-	         
-	            <hr/>
-	            
-	         <h:form id="activity-form-add">
-            
-				<div class="ui-fluid">
-					<p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-						<p:outputLabel for="title" value="Titre" />
+			<h:form id="form">			 
+			    <p:panel header="Ajouter une activité" style="margin-bottom:20px">
+			        <h:panelGrid columns="2" cellpadding="5">
+			          	<p:outputLabel for="title" value="Titre" />
 				        <p:inputText id="title" value="#{activity.activityToShow.title}" required="true"/>
 				        
 				        <p:outputLabel for="description" value="Description" />
@@ -60,21 +27,52 @@
 				        <p:inputText id="web" value="#{activity.activityToShow.webAdress}"/>
 				        
 				        <p:outputLabel for="year" value="Année" />
-				        <p:datePicker id="year" value="#{activity.activityToShow.year}" required="true" pattern="yyyy"/>
+				        <p:inputText id="year" value="#{activity.activityToShow.year}" required="true"/>
 				        
 				        <p:outputLabel for="type" value="Type" />
 				        <p:selectOneMenu id="type" value="#{activity.activityToShow.type}" required="true">
 		        			<f:selectItems value="#{activity.types}" />
 				        </p:selectOneMenu>  
-				        				        
-				        <span/>
-
-				        <p:commandButton type="submit" action="#{activity.addActivity()}" value="Ajouter" update="growl :activity-form:activity-table" icon="pi pi-plus"/>
-					</p:panelGrid>
-			    </div>
-			    
-			   </h:form>
-			    
+			 
+			            <p:commandButton id="btn_reset" value="Reset" type="reset"/>
+			            
+			            <p:commandButton id="btn_add" value="Ajouter" action="#{activity.addActivity()}" update="activities growl @parent" icon="pi pi-plus">
+			                <p:collector value="#{activity.activityToShow}" addTo="#{activity.personToShow.activities}" unique="true"/>
+			            </p:commandButton>
+			        </h:panelGrid>
+			    </p:panel>
+			 
+			    <p:outputPanel id="activities">
+				    <p:dataTable id="activity-table" value="#{activity.personToShow.activities}" var="a">
+		            
+		            	<p:column style="width:20px">
+					        <p:rowToggler />
+					    </p:column>
+		            
+		             	<p:column headerText="Activités">
+					        <strong><h:outputText value="#{a.year}" /></strong>
+		                   	-
+		                   	<h:outputText value="#{a.title}" />
+		                   	(<h:outputText value="#{a.type}" />)
+					    </p:column>
+					    
+					    <p:rowExpansion>
+						    <p>Site web: <h:outputText value="#{a.webAdress}" /></p>
+						    <hr/>
+					    	<p><h:outputText value="#{a.description}" /></p>
+					    	
+					    </p:rowExpansion>
+					    			   			    					    
+					    <p:column headerText="Action" style="width:115px">
+			                <p:commandButton value="Supprimer" action="#{activity.removeActivity(a.id)}" update=":form:activities" process=":form:activities">
+			                    <p:collector value="#{a}" removeFrom="#{activity.personToShow.activities}" unique="true"/>
+			                </p:commandButton>
+			            </p:column>
+		
+		            </p:dataTable>
+			    </p:outputPanel>
+			</h:form>
+	
 			    <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
 			    <p:linkButton outcome="editPerson" value="Retour" icon="pi pi-angle-left" />
 			    <p:linkButton outcome="person" value="Terminer" icon="pi pi-check"/>

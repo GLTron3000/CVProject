@@ -13,6 +13,7 @@ import cv3000.models.Activity;
 import cv3000.models.ActivityType;
 import cv3000.models.Person;
 import cv3000.services.IActivityManager;
+import cv3000.services.IPersonManager;
 
 @Named("activity")
 @SessionScoped
@@ -24,21 +25,24 @@ public class ActivityController implements Serializable {
 	@Inject
 	IActivityManager activityManager;
 	
+	@Inject
+	IPersonManager personManager;
+	
 	Activity activityToShow;
 	
 	Person personToShow;
 	
-	Map<ActivityType, String> types = new LinkedHashMap<ActivityType, String>();
+	Map<String, ActivityType> types = new LinkedHashMap<String, ActivityType>();
 	
 	@PostConstruct
 	void init() {
-		types.put(ActivityType.TRAINING, "Stage");
-		types.put(ActivityType.OTHER, "Autre");
-		types.put(ActivityType.PROJECT, "Projet");
-		types.put(ActivityType.PROFESSIONAL, "Pro");
+		types.put("Stage", ActivityType.TRAINING);
+		types.put( "Autre", ActivityType.OTHER);
+		types.put("Projet", ActivityType.PROJECT);
+		types.put("Pro", ActivityType.PROFESSIONAL);
 	}	
 	
-	public Map<ActivityType, String> getTypes() {
+	public Map<String, ActivityType> getTypes() {
 		return types;
 	}
 	
@@ -61,8 +65,8 @@ public class ActivityController implements Serializable {
 	public String addActivity() {
 		System.out.println("ADD " + activityToShow.getTitle() + " " + activityToShow.getYear());
 		activityManager.addActivity(activityToShow, personToShow);
-		personToShow.getActivities().add(activityToShow);
 		activityToShow = new Activity();
+		personManager.updatePerson(personToShow);
 		return "editActivities";		
 	}
 	
@@ -73,9 +77,9 @@ public class ActivityController implements Serializable {
 	}
 	
 	public String removeActivity(Long id) {
-		System.out.println("Remove " + id);
+		System.out.println("REMOVE " + id);
 		activityManager.removeActivity(id);
-		personToShow.getActivities().removeIf(a -> a.getId() == id);
+		personManager.updatePerson(personToShow);
 		return "editActivities";		
 	}
 	
