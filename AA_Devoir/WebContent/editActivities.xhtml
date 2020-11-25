@@ -8,7 +8,7 @@
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
             <h1>Modifier Compte</h1>
-            
+                        
             <p:steps activeIndex="1">
 			    <p:menuitem value="Détails personnels" />
 			    <p:menuitem value="CV" />
@@ -34,7 +34,7 @@
 		        			<f:selectItems value="#{activity.types}" />
 				        </p:selectOneMenu>  
 			 
-			            <p:commandButton id="btn_reset" value="Reset" type="reset"/>
+			            <span/>
 			            
 			            <p:commandButton id="btn_add" value="Ajouter" action="#{activity.addActivity()}" update="activities growl @parent" icon="pi pi-plus">
 			                <p:collector value="#{activity.activityToShow}" addTo="#{activity.personToShow.activities}" unique="true"/>
@@ -72,15 +72,15 @@
 		            </p:dataTable>
 			    </p:outputPanel>
 			</h:form>
-	
-			    <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
-			    <p:linkButton outcome="editPerson" value="Retour" icon="pi pi-angle-left" />
-			    <p:linkButton outcome="person" value="Terminer" icon="pi pi-check"/>
-			    
+
+			<hr/>
 			
-						
+		    <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
+		    <p:linkButton outcome="editPerson" value="Retour" icon="pi pi-angle-left" />
+		    <p:linkButton outcome="person" value="Terminer" icon="pi pi-check"/>
+			    						
         </ui:define>
-        <ui:define name="title">CV3000 - Compte</ui:define>
+        <ui:define name="title">CView - Compte</ui:define>
     </ui:composition>
 
 </html>

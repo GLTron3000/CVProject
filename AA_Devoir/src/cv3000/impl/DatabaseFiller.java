@@ -35,11 +35,12 @@ public class DatabaseFiller {
 
 	@PostConstruct
 	public void init() throws ParseException {
-		fillDB(100, 4);
+		fillDB(1000, 4);
 		addAdmin();
 	}
 	
 	public void fillDB(int nbOfPersons, int nbOfMaxActivities) throws ParseException {
+		System.out.println("[DBFILL] Adding "+nbOfPersons+" persons with up to "+nbOfMaxActivities+" activities each...");
 		
 		if (!pm.getAllPersons().isEmpty()) {
 			System.out.println("[DBFILL] Data is present, data fill aborted !");
@@ -58,9 +59,7 @@ public class DatabaseFiller {
 			p.setWebSite(Normalizer.normalize(firstname.toLowerCase()+"-"+lastname.toLowerCase()+".fr", Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", ""));
 			p.setPassword("1234");
 			
-			System.out.println("[DBFILL] Adding Person "+p.getFirstName()+" " + p.getLastName()+" "+p.getBirthDate()+" "+p.getEmail()+" "+p.getWebSite());
 			pm.createPerson(p);
-			System.out.println("[DBFILL] Adding Person done");
 			
 			int nbOfActivities = new Random().nextInt(nbOfMaxActivities) + 1;
 			
@@ -75,9 +74,8 @@ public class DatabaseFiller {
 				a.setType(getRandomActivityType());
 				a.setWebAdress(job.toLowerCase().replaceAll("\\s+", "")+".com");	
 				
-				System.out.println("[DBFILL] Adding Activity "+a.getTitle()+" "+a.getDescription()+" "+a.getYear()+" "+a.getType()+" "+a.getWebAdress());
 				am.addActivity(a, p);
-				System.out.println("[DBFILL] Adding Activity done");
+
 				nbOfActivities--;
 			}
 			
@@ -119,9 +117,8 @@ public class DatabaseFiller {
 		p.setWebSite("cv3000.fr");
 		p.setPassword("1234");
 		
-		System.out.println("[DBFILL] Adding admin");
 		pm.createPerson(p);
-		System.out.println("[DBFILL] Adding admin done");
+		System.out.println("[DBFILL] Added admin");
 	}
 
 }

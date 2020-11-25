@@ -34,6 +34,11 @@ public class PersonController implements Serializable {
 	}
 	
 	public String savePerson() {
+		personManager.createPerson(personToShow);
+		return "person?faces-redirect=true";		
+	}
+	
+	public String updatePerson() {
 		personManager.updatePerson(personToShow);
 		return "editPerson";		
 	}

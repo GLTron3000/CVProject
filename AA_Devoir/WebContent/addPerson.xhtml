@@ -29,17 +29,13 @@
 				        <p:outputLabel for="password" value="Mot de passe" />
 				        <p:inputText id="password" value="#{person.personToShow.password}" type="password" required="true"/>
 				        
-				        <span/>
-				        
-					    <h:panelGroup>
-				            <p:linkButton outcome="account" value="Annuler" />
-				            <p:commandButton action="#{person.savePerson()}" value="Sauvegarder" update="growl"/>
-			            </h:panelGroup>
+				        <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
+				        <p:commandButton action="#{person.savePerson()}" value="Sauvegarder" update="growl" icon="pi pi-check"/>
 					</p:panelGrid>
 			    </div>
 			</h:form>
         </ui:define>
-        <ui:define name="title">CV3000 - Compte</ui:define>
+        <ui:define name="title">CView - Compte</ui:define>
     </ui:composition>
 
 </html>

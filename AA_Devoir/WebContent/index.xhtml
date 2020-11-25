@@ -7,11 +7,15 @@
 
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="content">
-            <h1>
-                <h:outputText value="Bienvenue sur CV 3000, l'application qui permet de consutler des profils et des CVs." />
-            </h1>
+            
+            <div style="text-align: center;">
+	            <h1>Bienvenue sur CView</h1>
+	            <h2>L'application qui permet de consutler des profils et des CVs.</h2>
+	            <p:linkButton outcome="search" value="Rechercher une personne ou un CV"/>
+            </div>
+
         </ui:define>
-        <ui:define name="title">CV3000</ui:define>
+        <ui:define name="title">CView</ui:define>
     </ui:composition>
 
 </html>

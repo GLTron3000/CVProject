@@ -35,14 +35,15 @@
 				        
 				        <span/>
 				        
-				        <p:commandButton action="#{person.savePerson()}" value="Sauvegarder" update="growl"/>
+				        <p:commandButton action="#{person.updatePerson()}" value="Sauvegarder les modifications" update="growl" icon="pi pi-save"/>
 					</p:panelGrid>
 			    </div>
+			    <hr/>
 			    <p:linkButton outcome="account" value="Annuler" icon="pi pi-times"/>
 			    <p:commandButton action="#{activity.editActivities(person.personToShow)}" value="Suivant" icon="pi pi-angle-right"/>
 			</h:form>
         </ui:define>
-        <ui:define name="title">CV3000 - Compte</ui:define>
+        <ui:define name="title">CView - Compte</ui:define>
     </ui:composition>
 
 </html>

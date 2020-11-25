@@ -13,7 +13,6 @@ import cv3000.models.Activity;
 import cv3000.models.ActivityType;
 import cv3000.models.Person;
 import cv3000.services.IActivityManager;
-import cv3000.services.IPersonManager;
 
 @Named("activity")
 @SessionScoped
@@ -24,10 +23,7 @@ public class ActivityController implements Serializable {
 	
 	@Inject
 	IActivityManager activityManager;
-	
-	@Inject
-	IPersonManager personManager;
-	
+		
 	Activity activityToShow;
 	
 	Person personToShow;
@@ -36,10 +32,10 @@ public class ActivityController implements Serializable {
 	
 	@PostConstruct
 	void init() {
-		types.put("Stage", ActivityType.TRAINING);
-		types.put( "Autre", ActivityType.OTHER);
+		types.put("Professionnel", ActivityType.PROFESSIONAL);
+		types.put("Formation", ActivityType.TRAINING);
 		types.put("Projet", ActivityType.PROJECT);
-		types.put("Pro", ActivityType.PROFESSIONAL);
+		types.put("Autre", ActivityType.OTHER);
 	}	
 	
 	public Map<String, ActivityType> getTypes() {
@@ -66,7 +62,6 @@ public class ActivityController implements Serializable {
 		System.out.println("ADD " + activityToShow.getTitle() + " " + activityToShow.getYear());
 		activityManager.addActivity(activityToShow, personToShow);
 		activityToShow = new Activity();
-		personManager.updatePerson(personToShow);
 		return "editActivities";		
 	}
 	
@@ -79,7 +74,6 @@ public class ActivityController implements Serializable {
 	public String removeActivity(Long id) {
 		System.out.println("REMOVE " + id);
 		activityManager.removeActivity(id);
-		personManager.updatePerson(personToShow);
 		return "editActivities";		
 	}
 	
