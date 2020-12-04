@@ -88,7 +88,7 @@ public class TestPersonManager extends BaseJunit5 {
 	void testGetPersonsByFirstName() throws ParseException {
 		Person p = new Person();
 		p.setFirstName("Arthur2");
-		p.setLastName("LeRoi3");
+		p.setLastName("LeRoi2");
 		p.setEmail("arthur2@leroi.com");
 		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
@@ -119,17 +119,17 @@ public class TestPersonManager extends BaseJunit5 {
 	@Test
 	void testGetPersonsByName() throws ParseException {
 		Person p = new Person();
-		p.setFirstName("Arthur3");
-		p.setLastName("LeRoi3");
-		p.setEmail("arthur3@leroi.com");
+		p.setFirstName("Arthur4");
+		p.setLastName("LeRoi4");
+		p.setEmail("arthur4@leroi.com");
 		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		
 		pm.createPerson(p);
 		
-		Person p2 = (Person) pm.getPersonsByName("LeRoi3").toArray()[0];
+		Person p2 = (Person) pm.getPersonsByName("LeRoi4").toArray()[0];
 		assertNotNull(p2);
-		assertEquals(p2.getLastName(), "LeRoi3");
+		assertEquals(p2.getLastName(), "LeRoi4");
 	}
 	
 	

@@ -53,9 +53,9 @@ public class TestActivityManager extends BaseJunit5 {
 	@Test
 	void testRemoveActivity() throws ParseException {
 		Person p = new Person();
-		p.setFirstName("James");
-		p.setLastName("James");
-		p.setEmail("james@james.com");
+		p.setFirstName("James2");
+		p.setLastName("Cameron2");
+		p.setEmail("james2@cameron.com");
 		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("OSS117");
 		
@@ -109,9 +109,9 @@ public class TestActivityManager extends BaseJunit5 {
 	@Test
 	void testGetActivityById() throws ParseException{
 		Person p = new Person();
-		p.setFirstName("Arthur");
-		p.setLastName("LeRoi");
-		p.setEmail("arthur@leroi.com");
+		p.setFirstName("Arthur10");
+		p.setLastName("LeRoi10");
+		p.setEmail("arthur10@leroi.com");
 		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		
@@ -136,9 +136,9 @@ public class TestActivityManager extends BaseJunit5 {
 	@Test
 	void testGetActivityByTitle() throws ParseException{
 		Person p = new Person();
-		p.setFirstName("Arthur2");
-		p.setLastName("LeRoi3");
-		p.setEmail("arthur2@leroi.com");
+		p.setFirstName("Arthur11");
+		p.setLastName("LeRoi11");
+		p.setEmail("arthur11@leroi.com");
 		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("table");
 		

@@ -22,15 +22,15 @@ public class TestUser extends BaseJunit5 {
     void testLoginUser() throws ParseException {
     	IUser user = lookup(BASE + "/user", IUser.class);
     	Person p = new Person();
-		p.setFirstName("Jean");
-		p.setLastName("Pierre");
-		p.setEmail("jean@pierre.com");
+		p.setFirstName("Jean1");
+		p.setLastName("Pierre1");
+		p.setEmail("jean1@pierre.com");
 		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("123");
 		
 		pm.createPerson(p);
 		
-        user.login("jean@pierre.com", "123");
+        user.login("jean1@pierre.com", "123");
 
         assertNotNull(user.getPerson());
         assertTrue(user.isLogged());
@@ -50,9 +50,9 @@ public class TestUser extends BaseJunit5 {
     @Test
     void testLogoutUser() throws ParseException {
     	Person p = new Person();
-		p.setFirstName("Jean");
-		p.setLastName("Paul");
-		p.setEmail("jean@paul.com");
+    	p.setFirstName("Jean2");
+		p.setLastName("Pierre2");
+		p.setEmail("jean2@pierre.com");
 		p.setBirthDate(new SimpleDateFormat("yyyy/MM/dd").parse("01/01/2000"));
 		p.setPassword("123");
 		
@@ -60,7 +60,7 @@ public class TestUser extends BaseJunit5 {
 		
     	IUser user = lookup(BASE + "/user", IUser.class);
     	
-    	user.login("jean@paul.com", "123");
+    	user.login("jean2@pierre.com", "123");
     	
     	assertNotNull(user.getPerson());
         assertTrue(user.isLogged());
