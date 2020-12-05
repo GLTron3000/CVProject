@@ -14,6 +14,11 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     
+    <welcome-file-list>
+	    <welcome-file>index.xhtml</welcome-file>
+	</welcome-file-list>
+    
+    
     <!-- URL traitées par cette servlet -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
@@ -31,8 +36,8 @@
     <!-- Paramétrage du projet -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
-        <param-value>Development</param-value>
-        <!-- <param-value>Production</param-value> -->
+        <!-- <param-value>Development</param-value> -->
+        <param-value>Production</param-value>
     </context-param>
     <context-param>
         <param-name>org.apache.myfaces.annotation.SCAN_PACKAGES</param-name>

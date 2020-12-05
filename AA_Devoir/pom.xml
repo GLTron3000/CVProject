@@ -5,6 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <build>
+  		<finalName>BLANC_PIERES_AA_DEVOIR</finalName>	
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
 		<resources>
@@ -20,7 +21,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<release>14</release>
+					<release>11</release>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -36,6 +37,20 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<!-- JUnit 5 requires Surefire version 2.22.0 or higher -->
 				<version>2.22.0</version>
+			</plugin>
+			<plugin>
+			  <groupId>org.apache.tomee.maven</groupId>
+			  <artifactId>tomee-maven-plugin</artifactId>
+			  <version>8.0.4</version>
+			  <executions>
+			    <execution>
+			      <id>executable-jar</id>
+			      <goals>
+			        <goal>exec</goal>
+			      </goals>
+			      <phase>package</phase>
+			    </execution>
+			  </executions>
 			</plugin>
 		</plugins>
 	</build>
